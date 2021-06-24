@@ -135,9 +135,9 @@ Route::group(['prefix'=>'provider','as'=>'provider.','middleware'=>'provider'], 
   Route::get('/dashboard','ProviderController@dashboard')->name('dashboard');
   Route::get('/profile','ProviderController@profile')->name('profile');
   Route::get('/services','ProviderController@services')->name('services');
-  Route::get('/books','Bookcontroller@index')->name('books');
-  Route::get('/books/create','Bookcontroller@create')->name('books.create');
-  Route::post('/books/store','Bookcontroller@store')->name('books.store');
+  Route::get('/books','BookController@index')->name('books');
+  Route::get('/books/create','BookController@create')->name('books.create');
+  Route::post('/books/store','BookController@store')->name('books.store');
   Route::get('/books/service/{book}','BookServiceController@create')->name('books.service.create');
   Route::post('/books/service/store/{book}','BookServiceController@store')->name('books.service.store');
   Route::get('/orders/{status}','ProviderController@orders')->name('orders');
