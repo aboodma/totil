@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ProviderService;
+use App\BookService;
 use Illuminate\Http\Request;
 
 class ProviderServiceController extends Controller
@@ -89,7 +90,8 @@ class ProviderServiceController extends Controller
     }
     public function service_check(Request $request)
     {
-      $providerService =  ProviderService::where(['service_id'=>$request->service_id,'provider_id'=>$request->provider_id])->first();
+        // return $request->all();
+      $providerService =  BookService::where(['service_id'=>$request->service_id,'book_id'=>$request->provider_id])->first();
         $service = $providerService->service;
         return  response()->json(['providerService'=>$providerService,'description'=>_ti($service->description)], 200);
     }

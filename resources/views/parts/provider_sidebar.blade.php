@@ -40,6 +40,11 @@
                     {{__('Order History')}}
                 </a>
                 <a class="dropdown-item py-2" @if(auth()->user()->provider->is_approved)
+                    href="{{route('provider.books')}}"
+                    @endif>
+                    {{__('My Books')}}
+                </a>
+                <a class="dropdown-item py-2" @if(auth()->user()->provider->is_approved)
                     href="{{route('provider.services')}}"
                     @endif>
                     {{__('My Services')}}

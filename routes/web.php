@@ -37,7 +37,8 @@ Route::post('reviews','HomeController@reviews')->name('reviews');
 Route::post('notify/read','NotificationController@read')->name('notify_read');
 Route::get('setLocale/{locale}','HomeController@changeLocale')->name('ChangeLocale');
 //ws routes
-Route::get('service_check','ProviderServiceController@service_check')->name('service_check');
+Route::get('/service_check','ProviderServiceController@service_check')->name('service_check');
+Route::post('/book','BookController@showBookServices')->name('book_show');
 
 //customer routes
 Route::group(['prefix'=>'customer','as'=>'customer.','middleware'=>'customer'], function(){
@@ -134,6 +135,11 @@ Route::group(['prefix'=>'provider','as'=>'provider.','middleware'=>'provider'], 
   Route::get('/dashboard','ProviderController@dashboard')->name('dashboard');
   Route::get('/profile','ProviderController@profile')->name('profile');
   Route::get('/services','ProviderController@services')->name('services');
+  Route::get('/books','Bookcontroller@index')->name('books');
+  Route::get('/books/create','Bookcontroller@create')->name('books.create');
+  Route::post('/books/store','Bookcontroller@store')->name('books.store');
+  Route::get('/books/service/{book}','BookServiceController@create')->name('books.service.create');
+  Route::post('/books/service/store/{book}','BookServiceController@store')->name('books.service.store');
   Route::get('/orders/{status}','ProviderController@orders')->name('orders');
   Route::get('/orders/procced/{order}','ProviderController@orders_procced')->name('orders_procced');
   Route::get('/orders/OrderChangeStatus/{status}/{order}','ProviderController@OrderChangeStatus')->name('OrderChangeStatus');

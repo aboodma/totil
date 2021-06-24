@@ -67,37 +67,91 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12 copyright p-2 pb-3" >
-                        <ul class="social " style="margin-left: 0">
-                            @if($provider->links_fb != null)
-                            <li>
-                                <a href="{{$provider->links_fb}}"><i class="fab fa-facebook" aria-hidden="true"></i></a>
-                            </li>
-                            @endif
-                            @if($provider->links_tweet != null)
-                            <li>
-                                <a href="{{$provider->links_tweet}}"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                            </li>
-                            @endif
-                            @if($provider->links_youtube != null)
-                            <li>
-                                <a href="{{$provider->links_youtube}}"><i class="fab fa-youtube" aria-hidden="true"></i></a>
-                            </li>
-                            @endif
-                            @if($provider->links_tiktok != null)
-                            <li>
-                                <a href="{{$provider->links_tiktok}}"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
-                            </li>
-                            @endif
-                            @if($provider->links_ig != null)
-                            <li>
-                                <a href="{{$provider->links_ig}}"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                            </li>
-                            @endif
-                        </ul>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12 copyright p-2 pb-3" >
+                                <ul class="social " style="margin-left: 0">
+                                    @if($provider->links_fb != null)
+                                    <li>
+                                        <a href="{{$provider->links_fb}}"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                                    </li>
+                                    @endif
+                                    @if($provider->links_tweet != null)
+                                    <li>
+                                        <a href="{{$provider->links_tweet}}"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                                    </li>
+                                    @endif
+                                    @if($provider->links_youtube != null)
+                                    <li>
+                                        <a href="{{$provider->links_youtube}}"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                                    </li>
+                                    @endif
+                                    @if($provider->links_tiktok != null)
+                                    <li>
+                                        <a href="{{$provider->links_tiktok}}"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+                                    </li>
+                                    @endif
+                                    @if($provider->links_ig != null)
+                                    <li>
+                                        <a href="{{$provider->links_ig}}"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                                    </li>
+                                    @endif
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row books-slider "  data-toggle="inputs">
+                            @foreach ($provider->books as $book)
+                            <div class="col">
+                                <label>
+                                    <input type="radio" style="display: none" class="book_select" onchange="selectBook({{$book->id}})"  name="book_id" value="{{$book->id}}"   >
+                                    <div class="freelancer book  p-2 @if($loop->first) active-book @endif" id="book_{{$book->id}}" >
+                                        <div>
+                                            <div class="top-right p-1 text-center">
+                                                <span class="fa fa-heart-o"></span>
+                                            </div>
+                                            
+                                            <img src="{{asset($book->cover_path)}}">
+                                        </div>
+                
+                                        <div class="freelancer-footer">
+                
+                                            <h5 style="padding: 0px;">{{$book->title}}
+                                                <span style="font-size: 12px">
+                                                    <br>
+                                                    </span>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            @endforeach
+                        </div>
+                        
                     </div>
+                  
+                    <div class="col-md-12">
+                        <br>
+                        <form action="{{route('checkout')}}" method="POST">
+                            <input type="hidden" name="price" id="price">
+                            <input type="hidden" id="provider_id" name="provider_id" value="{{$provider->id}}">
+                            <input type="hidden" id="book_id" name="book_id" value="">
+                            @csrf
+                        <div class="row" id="BookServices" >
+                           
+                        </div>
+                        <div class="form-group mt-2">
+                            <button type="submit"
+                           
+                                class="btn  btn-success  btn-xlg form-control rd-in  p-2 ">{{__('Book Now')}} <i class="price"></i> </button>
+                        </div>
+                    </form>
+                    </div>
+
+
                 </div>
-                <div class="row">
+
+                
+                {{-- <div class="row">
                     <div class="col-md-12">
                         <form action="{{route('checkout')}}" method="POST">
                             <input type="hidden" name="price" id="price">
@@ -119,14 +173,9 @@
                                 
                      
                             </div>
-                            <div class="form-group mt-2">
-                                <button type="submit"
-                                @if($provider->services->count()  == 0) disabled @endif
-                                    class="btn  btn-success  btn-xlg form-control rd-in  p-2 @if($provider->services->count()  == 0) disabled @endif ">{{__('Book Now')}} <i class="price"></i> </button>
-                            </div>
-                        </form>
+                            
                     </div>
-                </div>
+                </div>  --}}
                 
             </div>
         </div>
@@ -186,7 +235,7 @@
                     @foreach (\App\Provider::where('provider_type_id',$provider->ProviderType->id)->get()->take(10) as $provider)
                     <div class="col">
                         <a href="{{route('provider_profile',$provider->id)}}">
-                            <div class="freelancer">
+                            <div class="freelancer ">
                                 <div>
                                     <div class="top-right p-1 text-center">
                                         <span class="fa fa-heart-o"></span>
@@ -236,6 +285,20 @@
     @endsection
     @section('script')
     <script>
+     
+        function selectBook(id){
+            $(".book").removeClass("active-book");
+            $("#book_"+id).addClass("active-book");
+            $.ajax({
+                url: "{{route('book_show')}}",
+                type:"POST",
+                data: {"_token":"{{csrf_token()}}","book_id":id},
+                success : function(data){
+                  $("#BookServices").html(data);
+                  $("#book_id").val(id);
+                }
+            })
+           }
 
         $('#exampleModal').on('show.bs.modal', function (event) {
             $.ajax({
@@ -250,8 +313,7 @@
             });
         })
         $(document).ready(function () {
-           
-            checkers();
+       
             $('.freelance-slider').slick({
                 infinite: true,
                 slidesToShow: 5,
@@ -262,63 +324,68 @@
                 // adaptiveHeight: true,
                 responsive:[
                     {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: true,
-        dots: true
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                    },
+                    {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                    },
+                    {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                    }
+                ]
+            });
+            $('.books-slider').slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 2,
+                dir: "ltr",
+                centerMode: false,
+                // centerPadding: '60px',
+                // adaptiveHeight: true,
+                responsive:[
+                    {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                    },
+                    {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                    },
+                    {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                    }
                 ]
             });
             
-            function checkers() {
-                $("#description_row").hide();
-                $.ajax({
-                  url:"{{route('service_check')}}",
-                  type:"GET",
-                data:{service_id:$('input[name="service_id"]:checked').val(),provider_id:$("#provider_id").val()},
-                  success : function (re) {
-                    $(".price").html(re.providerService.price + " USD");
-                      $("#description_row").show();
-                      $("#description").html(re.description);
-                      $("#price").val(re.providerService.price);
-                  }
-              });
-            }
+           
 
-            $(".service_select").click(function(){
-                $("#description_row").hide();
-
-                $.ajax({
-                  url:"{{route('service_check')}}",
-                  type:"GET",
-                data:{service_id:this.id,provider_id:$("#provider_id").val()},
-                  success : function (re) {
-                      $(".price").html(re.providerService.price + " USD");
-                      $("#description_row").show();
-                      $("#description").html(re.description);
-                      $("#price").val(re.providerService.price);
-                  }
-              });
-            //    $('#'+this.id).parent().toggleClass('active');
-            });
-
+        
         });
      
         //   freelance-slider

@@ -61,6 +61,7 @@ class HomeController extends Controller
      }
      public function checkout(Request $request)
      {
+      //   return $request->all();
         return view('website.checkout',compact('request'));
      }
 

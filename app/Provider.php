@@ -40,6 +40,10 @@ class Provider extends Model
     {
         return $this->hasMany(ProviderService::class);
     }
+    public function books()
+    {
+        return $this->hasMany(Book::class);
+    }
     
     public function orders()
     {
