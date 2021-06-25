@@ -8,7 +8,7 @@
 
     .active-menu {
         font-weight: bolder;
-        color: #d47fa6 !important;
+        color: #04808B !important;
     }
 
 </style>
@@ -97,31 +97,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card-body shadow p-3 mb-4 bg-white rounded">
-                            <h4 class="pb-2 pr-2">{{__('My Videos')}}</h4>
-                              <div class="row">
-                                @foreach (auth()->user()->orders as $order) 
-                                @if ($order->service->is_video) 
-                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
-                                        <div class="freelancer" >
-                                            <video style="width: 100%" controls>
-                                                <source src="{{asset($order->details->provider_message)}}" type="video/mp4">
-                                            </video>
-                                            <div class="freelancer-footer">  
-                                                <h5 style="padding: 0px;">
-                                                    <span style="font-size: 12px"></span>
-                                                </h5>
-                                            </div>
-                                        </div>
-                                </div>
-                                @endif
-                                @endforeach
-                              </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 
             </div>
         </div>

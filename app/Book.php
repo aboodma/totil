@@ -14,4 +14,8 @@ class Book extends Model
     {
        return $this->hasMany(BookService::class);
     }
+    public function orders()
+    {
+       return $this->hasMany(Book::class);
+    }
 }

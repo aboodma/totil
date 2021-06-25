@@ -10,20 +10,20 @@
     }
 
     .pink-btn {
-        color: #d47fa6;
-        border-color: #d47fa6;
+        color: #04808B;
+        border-color: #04808B;
         border-radius: 20px;
     }
 
     .pink-btn:hover {
         color: #fff !important;
-        background-color: #d47fa6 !important;
-        border-color: #d47fa6 !important;
+        background-color: #04808B !important;
+        border-color: #04808B !important;
     }
 
     .btn-big-pink {
-        background-color: #d47fa6 !important;
-        border-color: #d47fa6 !important;
+        background-color: #04808B !important;
+        border-color: #04808B !important;
 
     }
 

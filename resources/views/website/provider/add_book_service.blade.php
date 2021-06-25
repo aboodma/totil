@@ -8,7 +8,7 @@
 
     .active-menu {
         font-weight: bolder;
-        color: #d47fa6 !important;
+        color: #04808B !important;
     }
 
 </style>

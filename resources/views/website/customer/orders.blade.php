@@ -10,7 +10,7 @@
 
     .active-menu {
         font-weight: bolder;
-        color: #d47fa6 !important;
+        color: #04808B !important;
     }
 
     .wrap {
@@ -29,7 +29,7 @@
     }
 
     .star {
-        color: #d47fa6 !important;
+        color: #04808B !important;
     }
 
     .rate {
@@ -56,7 +56,7 @@
         font-size: 16px;
         content: "\f005";
         display: inline-block;
-        color: #d47fa6;
+        color: #04808B;
         z-index: 1;
         position: absolute;
         top: 17px;
@@ -93,7 +93,7 @@
         position: absolute;
         width: 35px;
         height: 35px;
-        background: #d47fa6;
+        background: #04808B;
         border-radius: 5px;
         top: -50px;
         left: 2px;
@@ -106,7 +106,7 @@
         font-weight: 900;
         content: "\f0dd";
         display: inline-block;
-        color: #d47fa6;
+        color: #04808B;
         z-index: 1;
         position: absolute;
         left: 9px;
@@ -153,7 +153,7 @@
             <div class="col-lg-8 right">
 
                 <div class="p-4 bg-white rounded shadow-sm mb-3">
-                    <h5 class="mb-4 font-weight-bold text-center">{{__('My Orders')}}
+                    <h5 class="mb-4 font-weight-bold text-center">{{__('My Books')}}
                     </h5>
                     <div class="row">
                         <div class="col-md-12">
@@ -164,6 +164,7 @@
                                             <th>{{__('ID')}}</th>
                                             <th>{{__('Service Name')}}</th>
                                             <th>{{__('Provider Name')}}</th>
+                                            <th>{{__('Book Name')}}</th>
                                             <th>{{__('Status')}}</th>
                                             <th>{{__('Total Price')}}</th>
                                             <th>{{__('Options')}}</th>
@@ -176,6 +177,7 @@
                                             <td>{{$order->id}}</td>
                                             <td>{{$order->service->name}}</td>
                                             <td>{{$order->provider->user->name}}</td>
+                                            <td>{{$order->book->title}}</td>
                                             <td>@if ($order->status == 0)
                                                 <span class="badge badge-warning">{{__('Pending')}}</span>
                                                 @elseif($order->status == 1)
@@ -187,9 +189,12 @@
                                                 @endif</td>
                                             <td>{{$order->total_price}}</td>
                                             <td>
-                                               <div class="btn-group">
+                                               <div class="btn-group d-flex justify-content-between">
                                                 <a href="{{route('customer.OrderTracking',Crypt::encrypt($order->id))}}"
                                                     class="btn btn-info"> {{__('Order Tracking')}} <i class="fa fa-eye"></i>
+                                                </a>
+                                                <a href="{{asset($order->details->provider_message)}}"
+                                                    class="btn btn-primary"> {{__('Download File')}} <i class="fa fa-download"></i>
                                                 </a>
                                                 
                                                 @if ($order->status == 2 && !isset($order->rate) )

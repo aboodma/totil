@@ -42,7 +42,7 @@
 <div class="services-wrapper bg-white py-3">
     <div class="container">
         <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 mb-1">{{__('Categories')}}
-            <a href="{{route('categories')}}" style="color:#d47fa6; font-weight:800" class="float-right"> <small
+            <a href="{{route('categories')}}" style="color:#04808B; font-weight:800" class="float-right"> <small
                     style="font-size: 13px ; font-weight:700">{{__('See all')}} </small></a>
         </p>
         <div class="row service-slider">
@@ -67,7 +67,7 @@
 <div class="freelance-projects bg-white py-3">
     <div class="container">
         <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 pt-3 mb-1">{{__('Featured')}}
-            <a href="{{route('featured')}}" style="color:#d47fa6; font-weight:800" class="float-right"> <small
+            <a href="{{route('featured')}}" style="color:#04808B; font-weight:800" class="float-right"> <small
                     style="font-size: 13px ; font-weight:700">{{__('See all')}} </small></a>
         </p>
         <div class="row ">
@@ -128,7 +128,7 @@
             
             <div class="col-md-12">
                 <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 mb-1">{{_ti($category->providerType->name)}}
-                    <a href="{{route('FilterByType',$category->provider_type_id)}}" style="color:#d47fa6; font-weight:800" class="float-right">
+                    <a href="{{route('FilterByType',$category->provider_type_id)}}" style="color:#04808B; font-weight:800" class="float-right">
                         <small style="font-size: 13px ; font-weight:700">{{__('See all')}} </small></a>
                 </p>
                 <div class="row ">

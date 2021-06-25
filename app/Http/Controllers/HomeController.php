@@ -8,6 +8,7 @@ use App\Order;
 use App\OrderDetail;
 use App\OrderReview;
 use App\ProviderType;
+use App\BookService;
 use Crypt;
 use App\User;
 use Illuminate\Support\Facades\Hash;
@@ -74,20 +75,20 @@ class HomeController extends Controller
 
         $order = New Order;
         $order->user_id = auth()->user()->id;
+        $order->book_id = $request->book_id;
         $order->provider_id = $request->provider_id;
         $order->service_id = $request->service_id;
         $order->total_price = $request->price;
-        $order->status = 0;
-        if (isset($request->is_public)) {
-           $order->is_public = $request->is_public;
-         }
+        $order->status = 2;
+        $order->is_public = 1;
+        
         if ($order->save()) {
             $order_details = new OrderDetail();
             $order_details->order_id = $order->id;
             $order_details->from = $request->from;
             $order_details->to  = $request->to;
             $order_details->customer_message = $request->customer_message;
-            $order_details->provider_message = " ";
+            $order_details->provider_message = BookService::where(['book_id'=>$request->book_id,'service_id'=>$request->service_id])->first()->file_path;
             $order_details->save();
             $Customernotify = new Notification;
             $Customernotify->user_id = auth()->user()->id;

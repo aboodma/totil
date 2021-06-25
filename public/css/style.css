@@ -59,8 +59,8 @@ Version: 1.0
 }
  .btn-success{
      color: #fff;
-     background-color: #BA6089;
-     border-color: #BA6089;
+     background-color: #04808B;
+     border-color: #04808B;
 }
 .btn-success:hover{
     color: #fff;
@@ -83,8 +83,8 @@ Version: 1.0
     border-color: #241332; 
 }
  .btn-outline-success {
-     color: #BA6089;
-     border-color: #BA6089;
+     color: #04808B;
+     border-color: #04808B;
 }
 .btn-outline-success:hover {
     color: #fff;
@@ -99,19 +99,19 @@ Version: 1.0
 }
 .btn-outline-success:not(:disabled):not(.disabled).active:focus, .btn-outline-success:not(:disabled):not(.disabled):active:focus{
     color: #fff;
-    border-color: #BA6089;
+    border-color: #04808B;
     box-shadow: 0 0 0 .2rem rgba(57, 8, 97, 0.5);
 }
 
  .btn-light {
-     color: #BA6089;
+     color: #04808B;
      background-color: #e5f7f0;
      border-color: #d8f7eb;
 }
  .btn-light:hover {
      color: #ffffff;
-     background-color: #BA6089;
-     border-color: #BA6089;
+     background-color: #04808B;
+     border-color: #04808B;
 }
  .text-gold {
      color: #d3ac2b;
@@ -185,12 +185,12 @@ p.help-block li {
 .dropdown-item.active, .dropdown-item:active {
     color: #fff;
     text-decoration: none;
-    background-color: #ba6089;
+    background-color: #04808B;
 }
 .btn-outline-success:not(:disabled):not(.disabled).active, .btn-outline-success:not(:disabled):not(.disabled):active, .show>.btn-outline-success.dropdown-toggle {
     color: #fff;
-    background-color: #ba6089;
-    border-color: #ba6089;
+    background-color: #04808B;
+    border-color: #04808B;
 }
 .text-success {
     color: #1fc9c8!important;
@@ -773,7 +773,7 @@ p.help-block li {
 }
 /* popular */
  .green-btn {
-     background: #BA6089;
+     background: #04808B;
      display: inline-block;
      border-radius: 5px;
      font-size: 16px;
@@ -932,7 +932,7 @@ p.help-block li {
 }
  .market-wrapper .categories-list li a:hover:after {
      width: 80px;
-     border-color: #BA6089;
+     border-color: #04808B;
 }
 /* market place */
 /* freelance prokect */
@@ -1182,12 +1182,12 @@ p.help-block li {
      transition: .15s ease-in-out;
 }
  .c-fill-color-btn {
-     background: #BA6089;
-     background: -webkit-linear-gradient(legacy-direction(to right), #BA6089 0%, #1dc8cc 100%);
-     background: -webkit-gradient(linear, left top, right top, from(#BA6089), to(#1dc8cc));
-     background: -webkit-linear-gradient(left, #BA6089 0%, #1dc8cc 100%);
-     background: -o-linear-gradient(left, #BA6089 0%, #1dc8cc 100%);
-     background: linear-gradient(to right, #BA6089 0%, #1dc8cc 100%);
+     background: #04808B;
+     background: -webkit-linear-gradient(legacy-direction(to right), #04808B 0%, #1dc8cc 100%);
+     background: -webkit-gradient(linear, left top, right top, from(#04808B), to(#1dc8cc));
+     background: -webkit-linear-gradient(left, #04808B 0%, #1dc8cc 100%);
+     background: -o-linear-gradient(left, #04808B 0%, #1dc8cc 100%);
+     background: linear-gradient(to right, #04808B 0%, #1dc8cc 100%);
      color: #fff !important;
 }
  .c-border-btn {
@@ -1267,7 +1267,7 @@ p.help-block li {
      z-index: 99;
 }
  .third-menu .right ul li:last-child i {
-     color: #BA6089;
+     color: #04808B;
 }
  .third-menu .left ul li {
      margin: 0 20px 0 0px;
@@ -1280,7 +1280,7 @@ p.help-block li {
      left: 0;
      height: 4px;
      width: 100%;
-     background: #BA6089;
+     background: #04808B;
      bottom: -1px;
 }
  .third-menu .left ul li a {
@@ -1409,8 +1409,8 @@ p.help-block li {
 }
  .main-page .right .nav-tabs li a.active {
      background: #fff;
-     color: #BA6089;
-     border-bottom: 3px solid #BA6089;
+     color: #04808B;
+     border-bottom: 3px solid #04808B;
 }
  .main-page .right .nav-tabs li a {
      background-color: #fafafa;
@@ -1470,7 +1470,7 @@ p.help-block li {
      color: #62646a;
 }
  .main-page .right .tab-content .features li.included i {
-     color: #BA6089;
+     color: #04808B;
 }
  .main-page .right .tab-content .features li {
      font-size: 14px;
@@ -1487,12 +1487,12 @@ p.help-block li {
      border: 1px solid transparent;
      border-radius: 4px;
      font-weight: 600;
-     background: #BA6089;
-     background: -webkit-linear-gradient(legacy-direction(to right), #BA6089 0%, #1dc8cc 100%);
-     background: -webkit-gradient(linear, left top, right top, from(#BA6089), to(#1dc8cc));
-     background: -webkit-linear-gradient(left, #BA6089 0%, #1dc8cc 100%);
-     background: -o-linear-gradient(left, #BA6089 0%, #1dc8cc 100%);
-     background: linear-gradient(to right, #BA6089 0%, #1dc8cc 100%);
+     background: #04808B;
+     background: -webkit-linear-gradient(legacy-direction(to right), #04808B 0%, #1dc8cc 100%);
+     background: -webkit-gradient(linear, left top, right top, from(#04808B), to(#1dc8cc));
+     background: -webkit-linear-gradient(left, #04808B 0%, #1dc8cc 100%);
+     background: -o-linear-gradient(left, #04808B 0%, #1dc8cc 100%);
+     background: linear-gradient(to right, #04808B 0%, #1dc8cc 100%);
      font-size: 16px;
      line-height: 100%;
      text-decoration: none;
@@ -1706,12 +1706,12 @@ p.help-block li {
      padding: 12px 16px;
 }
  .table-package table tr.select-package td button {
-     background: #BA6089;
-     background: -webkit-linear-gradient(legacy-direction(to right), #BA6089 0%, #1dc8cc 100%);
-     background: -webkit-gradient(linear, left top, right top, from(#BA6089), to(#1dc8cc));
-     background: -webkit-linear-gradient(left, #BA6089 0%, #1dc8cc 100%);
-     background: -o-linear-gradient(left, #BA6089 0%, #1dc8cc 100%);
-     background: linear-gradient(to right, #BA6089 0%, #1dc8cc 100%);
+     background: #04808B;
+     background: -webkit-linear-gradient(legacy-direction(to right), #04808B 0%, #1dc8cc 100%);
+     background: -webkit-gradient(linear, left top, right top, from(#04808B), to(#1dc8cc));
+     background: -webkit-linear-gradient(left, #04808B 0%, #1dc8cc 100%);
+     background: -o-linear-gradient(left, #04808B 0%, #1dc8cc 100%);
+     background: linear-gradient(to right, #04808B 0%, #1dc8cc 100%);
      padding: 12px 24px;
      color: #fff;
      width: 100%;
@@ -1730,14 +1730,14 @@ p.help-block li {
 }
  .table-package table tr.select-package td button:hover {
      background: #1dc8cc;
-     background: -webkit-linear-gradient(legacy-direction(to right), #1dc8cc 0%, #BA6089 100%);
-     background: -webkit-gradient(linear, left top, right top, from(#1dc8cc), to(#BA6089));
-     background: -webkit-linear-gradient(left, #1dc8cc 0%, #BA6089 100%);
-     background: -o-linear-gradient(left, #1dc8cc 0%, #BA6089 100%);
-     background: linear-gradient(to right, #1dc8cc 0%, #BA6089 100%);
+     background: -webkit-linear-gradient(legacy-direction(to right), #1dc8cc 0%, #04808B 100%);
+     background: -webkit-gradient(linear, left top, right top, from(#1dc8cc), to(#04808B));
+     background: -webkit-linear-gradient(left, #1dc8cc 0%, #04808B 100%);
+     background: -o-linear-gradient(left, #1dc8cc 0%, #04808B 100%);
+     background: linear-gradient(to right, #1dc8cc 0%, #04808B 100%);
 }
  .table-package table tr td.boolean-pricing-factor.included::after {
-     color: #BA6089;
+     color: #04808B;
 }
  .table-package table tr td.boolean-pricing-factor::after {
      content: "\f00c";
@@ -2148,7 +2148,7 @@ p.help-block li {
      background-color: #ffb33e;
 }
  .review-section .fit-progressbar-bar .progress-fill {
-     background: #BA6089;
+     background: #04808B;
      background-color: rgb(29, 191, 115);
      height: 100%;
      position: absolute;
@@ -2227,9 +2227,9 @@ p.help-block li {
      z-index: 1;
 }
  .seller-card .user-online-indicator {
-     border: 1px solid #BA6089;
+     border: 1px solid #04808B;
      border-radius: 12px;
-     color: #BA6089;
+     color: #04808B;
      display: none;
      margin-bottom: 5px;
      padding: 0 6px;
@@ -2284,12 +2284,12 @@ p.help-block li {
      font-weight: 700;
      color: #fff;
      border: 1px solid transparent;
-     background: #BA6089;
-     background: -webkit-linear-gradient(legacy-direction(to right), #BA6089 0%, #1dc8cc 100%);
-     background: -webkit-gradient(linear, left top, right top, from(#BA6089), to(#1dc8cc));
-     background: -webkit-linear-gradient(left, #BA6089 0%, #1dc8cc 100%);
-     background: -o-linear-gradient(left, #BA6089 0%, #1dc8cc 100%);
-     background: linear-gradient(to right, #BA6089 0%, #1dc8cc 100%);
+     background: #04808B;
+     background: -webkit-linear-gradient(legacy-direction(to right), #04808B 0%, #1dc8cc 100%);
+     background: -webkit-gradient(linear, left top, right top, from(#04808B), to(#1dc8cc));
+     background: -webkit-linear-gradient(left, #04808B 0%, #1dc8cc 100%);
+     background: -o-linear-gradient(left, #04808B 0%, #1dc8cc 100%);
+     background: linear-gradient(to right, #04808B 0%, #1dc8cc 100%);
      flex: 1 1;
      margin: 0;
      display: inline-block;
@@ -2509,7 +2509,7 @@ p.help-block li {
      padding: 17px;
 }
  .web-design-menu ul li a:hover p {
-     color: #BA6089;
+     color: #04808B;
 }
  .web-design-menu ul li a:hover {
      box-shadow: 0 3.4623px 6.1418px rgba(0, 0, 0, .0523), 0 7.92923px 12.9218px rgba(0, 0, 0, .0476886), 0 9px 15px rgba(0, 0, 0, .08);
@@ -2631,12 +2631,12 @@ p.help-block li {
      border: 1px solid #c5c6c9;
 }
  .custom-checkbox:hover input~.checkmark {
-     border-color: #BA6089;
+     border-color: #04808B;
 }
  .custom-checkbox input:checked~.checkmark {
     /*background-color: #2196F3;
     */
-     border-color: #BA6089;
+     border-color: #04808B;
 }
  .custom-checkbox .checkmark:after {
      content: "";
@@ -2697,7 +2697,7 @@ p.help-block li {
      transition: .4s;
 }
  .switch input:checked+.slider {
-     background-color: #BA6089;
+     background-color: #04808B;
 }
  .switch input:focus+.slider {
      box-shadow: 0 0 1px #2196F3;
@@ -2764,22 +2764,22 @@ p.help-block li {
      border-radius: 50px;
 }
  ul.pagination li a:hover {
-     background: #BA6089;
-     background: -webkit-linear-gradient(legacy-direction(to right), #BA6089 0%, #1dc8cc 100%);
-     background: -webkit-gradient(linear, left top, right top, from(#BA6089), to(#1dc8cc));
-     background: -webkit-linear-gradient(left, #BA6089 0%, #1dc8cc 100%);
-     background: -o-linear-gradient(left, #BA6089 0%, #1dc8cc 100%);
-     background: linear-gradient(to right, #BA6089 0%, #1dc8cc 100%);
+     background: #04808B;
+     background: -webkit-linear-gradient(legacy-direction(to right), #04808B 0%, #1dc8cc 100%);
+     background: -webkit-gradient(linear, left top, right top, from(#04808B), to(#1dc8cc));
+     background: -webkit-linear-gradient(left, #04808B 0%, #1dc8cc 100%);
+     background: -o-linear-gradient(left, #04808B 0%, #1dc8cc 100%);
+     background: linear-gradient(to right, #04808B 0%, #1dc8cc 100%);
      color: #fff !important;
 }
  .page-item.active .page-link {
      z-index: 3;
-     background: #BA6089;
-     background: -webkit-linear-gradient(legacy-direction(to right), #BA6089 0%, #1dc8cc 100%);
-     background: -webkit-gradient(linear, left top, right top, from(#BA6089), to(#1dc8cc));
-     background: -webkit-linear-gradient(left, #BA6089 0%, #1dc8cc 100%);
-     background: -o-linear-gradient(left, #BA6089 0%, #1dc8cc 100%);
-     background: linear-gradient(to right, #BA6089 0%, #1dc8cc 100%);
+     background: #04808B;
+     background: -webkit-linear-gradient(legacy-direction(to right), #04808B 0%, #1dc8cc 100%);
+     background: -webkit-gradient(linear, left top, right top, from(#04808B), to(#1dc8cc));
+     background: -webkit-linear-gradient(left, #04808B 0%, #1dc8cc 100%);
+     background: -o-linear-gradient(left, #04808B 0%, #1dc8cc 100%);
+     background: linear-gradient(to right, #04808B 0%, #1dc8cc 100%);
      color: #fff !important;
 }
  section.related-links {
@@ -2943,7 +2943,7 @@ p.help-block li {
      margin: 8px 0;
      padding: 4px 12px;
      color: #fff;
-     background: #BA6089;
+     background: #04808B;
      border-radius: 4px;
      -webkit-box-pack: end;
      -ms-flex-pack: end;
@@ -3315,15 +3315,15 @@ p.help-block li {
 }
 
 .pink-btn {
-    color: #BA6089 !important;
-    border-color: #BA6089 !important;
+    color: #04808B !important;
+    border-color: #04808B !important;
     border-radius: 20px !important;
 }
 
 .pink-btn:hover {
     color: #fff !important;
-    background-color: #BA6089 !important;
-    border-color: #BA6089 !important;
+    background-color: #04808B !important;
+    border-color: #04808B !important;
 }
 
 .sec-btn {
@@ -3402,4 +3402,5 @@ p.help-block li {
   .book{
     cursor: pointer;
   }
+
 

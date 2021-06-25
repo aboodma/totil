@@ -10,20 +10,20 @@
     }
 
     .pink-btn {
-        color: #d47fa6;
-        border-color: #d47fa6;
+        color: #04808B;
+        border-color: #04808B;
         border-radius: 20px;
     }
 
     .pink-btn:hover {
         color: #fff !important;
-        background-color: #d47fa6 !important;
-        border-color: #d47fa6 !important;
+        background-color: #04808B !important;
+        border-color: #04808B !important;
     }
 
     .btn-big-pink {
-        background-color: #d47fa6 !important;
-        border-color: #d47fa6 !important;
+        background-color: #04808B !important;
+        border-color: #04808B !important;
 
     }
 
@@ -76,6 +76,7 @@ select {
                             <input type="hidden" name="price" value="{{$request->price}}">
                             <input type="hidden" name="from" value="{{$request->from}}">
                             <input type="hidden" name="to" value="{{$request->to}}">
+                            <input type="hidden" name="book_id" value="{{$request->book_id}}">
                             <input type="hidden" name="customer_message" value="{{$request->customer_message}}">
 
                             @csrf
@@ -172,8 +173,8 @@ select {
                                     <p><b>{{$request->price}} USD</b></p>
                                 </div>
                                 <div class="row justify-content-between form-group ml-1 mr-1 mb-0">
-                                    <p style="font-size: initial;color:#E30C5F"><b>{{__('Tax Fee')}}</b></p>
-                                    <p style="color:#E30C5F"><b>10 USD</b></p>
+                                    <p style="font-size: initial;color:#04808B"><b>{{__('Tax Fee')}}</b></p>
+                                    <p style="color:#04808B"><b>10 USD</b></p>
                                 </div>
                                 <hr class="mt-0 pt-0">
                                 <div class="row justify-content-between form-group ml-1 mr-1 mb-0">

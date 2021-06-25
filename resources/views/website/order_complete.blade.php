@@ -10,20 +10,20 @@
     }
 
     .pink-btn {
-        color: #d47fa6;
-        border-color: #d47fa6;
+        color: #04808B;
+        border-color: #04808B;
         border-radius: 20px;
     }
 
     .pink-btn:hover {
         color: #fff !important;
-        background-color: #d47fa6 !important;
-        border-color: #d47fa6 !important;
+        background-color: #04808B !important;
+        border-color: #04808B !important;
     }
 
     .btn-big-pink {
-        background-color: #d47fa6 !important;
-        border-color: #d47fa6 !important;
+        background-color: #04808B !important;
+        border-color: #04808B !important;
 
     }
 
@@ -58,7 +58,7 @@
 
                         </div>
                         <div class="d-flex justify-content-center">
-                        <a href="{{route('customer.OrderTracking',$d_order_id)}}" class="btn btn-success dark "> {{__('Track your Order')}}</a>
+                        <a href="{{route('customer.OrderTracking',$d_order_id)}}" class="btn btn-success dark "> {{__('Order Details')}}</a>
 
                         </div>
                     </div>

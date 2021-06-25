@@ -20,6 +20,10 @@ class Order extends Model
     {
         return $this->belongsTo(Service::class);
     }
+    public function book()
+    {
+        return $this->belongsTo(Book::class);
+    }
     public function provider()
     {
         return $this->belongsTo(Provider::class);

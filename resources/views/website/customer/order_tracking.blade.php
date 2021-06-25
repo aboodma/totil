@@ -8,7 +8,7 @@
 
     .active-menu {
         font-weight: bolder;
-        color: #d47fa6 !important;
+        color: #04808B !important;
     }
     .timeline {
   list-style-type: none;
@@ -49,9 +49,9 @@
     transition: all 200ms ease-in; }
 
 .li.complete .status {
-  border-top: 2px solid #d47fa6; }
+  border-top: 2px solid #04808B; }
   .li.complete .status:before {
-    background-color: #d47fa6;
+    background-color: #04808B;
     border: none;
     transition: all 200ms ease-in; }
   .li.reject .status h4 {
@@ -95,7 +95,7 @@
       margin-top: 16px;
     }
     .title {
-      color:#d47fa6;
+      color:#04808B;
       font-weight: 800;
     }
     .desc{
@@ -179,9 +179,7 @@
                               </li>
                              </ul>      
                         </div>
-                        <div class="col-md-12 mt-5">
-                          <p><b class="title">{{__('Order Status :')}} </b>  <span class="desc">{{__('The Star Received Your order')}}</span></p>
-                        </div>
+                       
                     </div> <hr>
                     <br>
 
@@ -189,23 +187,12 @@
                       <div class="col-md-12">
                         <legend>{{__('Order Details')}}</legend>
 
-                        <div class="row">
-                          <div class="col-md-3"><p class="title">{{__('From :')}}</p> </div>
-                          <div class="col-md-6"><p class="desc">{{$order->details->from}}</p></div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-3"><p class="title">{{__('To :')}}</p> </div>
-                          <div class="col-md-6"><p class="desc">{{$order->details->to}}</p></div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-3"><p class="title">{{__('Message  :')}}</p> </div>
-                          <div class="col-md-6"><p class="desc">{{$order->details->customer_message}}</p></div>
-                        </div>
+                        
                         <div class="row">
                           <div class="col-md-3"><p class="title">{{__('Date  :')}}</p> </div>
                           <div class="col-md-6"><p class="desc">{{$order->details->created_at}}</p></div>
                         </div>
-                        <hr>
+ 
                         <div class="row">
                           <div class="col-md-3"><p class="title">{{__('Service Name  :')}}</p> </div>
                           <div class="col-md-6"><p class="desc">{{$order->service->name}}</p></div>
@@ -213,6 +200,10 @@
                         <div class="row">
                           <div class="col-md-3"><p class="title">{{__('Provider Name  :')}}</p> </div>
                           <div class="col-md-6"><p class="desc">{{$order->provider->user->name}}</p></div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-3"><p class="title">{{__('File Link  :')}}</p> </div>
+                          <div class="col-md-6"><p class="desc"><a target="blank" href="{{asset($order->details->provider_message)}}">Click Here To Download Your File</a> </p></div>
                         </div>
                         <hr>
                         

@@ -128,7 +128,7 @@
                             <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
                         </svg>
                         @if( auth()->user()->notifications->where('is_read',0)->count() != 0)
-                        <i style="font-size: smaller;color:#ba6089 !important" class="fa fa-circle text-success"></i>
+                        <i style="font-size: smaller;color:#04808B!important" class="fa fa-circle text-success"></i>
                         @endif
                     </a>
                     <div class="dropdown-menu dropdown-menu-right border-0 shadow  "

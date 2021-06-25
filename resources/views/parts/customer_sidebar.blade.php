@@ -25,12 +25,9 @@
               </a>
               <a class="dropdown-item py-2 @if (Route::is('customer.orders')) active   @endif"
                   href="{{route('customer.orders')}} ">
-                  <i class="fas fa-shopping-cart mr-2"></i>  {{__('My Orders')}}
+                  <i class="fas fa-book mr-2"></i>  {{__('My Books')}}
               </a>
-              <a class="dropdown-item py-2 @if (Route::is('customer.videos')) active   @endif"
-                  href="{{route('customer.videos')}} ">
-                  <i class="fas fa-photo-video mr-2"></i>  {{__('My Videos')}}
-              </a>
+              
               <a class="dropdown-item py-2 @if (Route::is('customer.myFavoritList')) active   @endif"
                   href="{{route('customer.myFavoritList')}} ">
                   <i class="fas fa-star mr-2"></i>  {{__('My Favorit Celebrates')}}

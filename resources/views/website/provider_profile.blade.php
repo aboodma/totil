@@ -43,7 +43,7 @@
                         ">{{$provider->user->name}}</h2>
                         <span class="pb-2 mb-2">{{_ti($provider->Country->name)}} / {{_ti($provider->ProviderType->name)}}</span>
                         <p class="pt-2">{{$provider->about_me}}</p>
-                        <p style="font-weight: bold;color: #ba6089;"><i class="fa fa-clock-o" style="color: #ba6089;font-size: initial;"></i> {{__('Replies in 5 days')}}</p>
+                        <p style="font-weight: bold;color: #04808B;"><i class="fa fa-clock-o" style="color: #04808B;font-size: initial;"></i> {{__('Replies in 5 days')}}</p>
                         @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->count() != 0)
                         <p> <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate >= 1) text-warning @endif"></i> 
                                 <i class="fa fa-star @if($provider->orders->whereIn('id',\App\OrderReview::pluck('order_id'))->first()->rate->rate >= 2) text-warning @endif"></i>
@@ -131,8 +131,11 @@
                   
                     <div class="col-md-12">
                         <br>
-                        <form action="{{route('checkout')}}" method="POST">
+                        <form action="{{route('payment_info')}}" method="POST">
                             <input type="hidden" name="price" id="price">
+                            <input type="hidden" name="from" value="none">
+                            <input type="hidden" name="to" value="none">
+                            <input type="hidden" name="customer_message" value="none">
                             <input type="hidden" id="provider_id" name="provider_id" value="{{$provider->id}}">
                             <input type="hidden" id="book_id" name="book_id" value="">
                             @csrf
@@ -142,7 +145,7 @@
                         <div class="form-group mt-2">
                             <button type="submit"
                            
-                                class="btn  btn-success  btn-xlg form-control rd-in  p-2 ">{{__('Book Now')}} <i class="price"></i> </button>
+                                class="btn  btn-success  btn-xlg form-control rd-in  p-2 mt-3 ">{{__('Book Now')}} <i class="price"></i> </button>
                         </div>
                     </form>
                     </div>
@@ -179,55 +182,7 @@
                 
             </div>
         </div>
-        @if($provider->orders->count() != 0)
-        <div class="services-wrapper bg-white py-5">
-            <div class="container">
-                <h2>{{$provider->user->name}} {{__('Videos')}}</h2>
-                <div class="row freelance-slider">
-                    @foreach ($provider->orders->where('status',2) as $order)
-                    @if ($order->service->is_video) 
-                    <div class="col">
-                   
-                            <div class="freelancer">
-                                <video id="v-{{$order->id}}" style="width: 100%"
-                                        @php 
-                                        $file_name= explode('.',$order->details->provider_message);
-                                        $poster_path = public_path("uploads/thumbs/").$file_name[0].".jpg";
-                                        @endphp
-                                        @if(file_exists(public_path("uploads/thumbs/".$file_name[0].".jpg")))
-                                        poster="{{asset("uploads/thumbs/".$file_name[0].".jpg")}}"
-
-                                        @endif
-                                    >
-                                    <source src="{{asset($order->details->provider_message)}}" type="video/mp4">
-                                </video>
-                                <span id="play-{{$order->id}}" onclick="playVideo('{{$order->id}}')" class="fa fa-play" style="position: absolute;
-                                    bottom: 50%;
-                                    left: 50%;
-                                    display:block;
-                                    transform: translate(-50%,50%);
-                                    font-size: 50px;
-                                    opacity: .8;
-                                    transition: opacity,font-size .4s;
-                                    color: #fff;"></span>
-                                    <span id="pause-{{$order->id}}" onclick="pauseVideo('{{$order->id}}')" class="fa fa-pause" style="position: absolute;
-                                        display:none;
-                                        bottom: 50%;
-                                        left: 50%;
-                                        transform: translate(-50%,50%);
-                                        font-size: 50px;
-                                        opacity: .8;
-                                        transition: opacity,font-size .4s;
-                                        color: #fff;"></span>
-                            </div>
-                       
-                    </div>
-                    @endif
-                    @endforeach
-                </div>
-            </div>
-        </div>
-        @endif
+      
         <div class="freelance-projects bg-white py-5">
             <div class="container">
                 <h1>{{_ti($provider->ProviderType->name)}}</h1>
@@ -275,7 +230,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body border-0" id="modal_body">
+            <div class="modal-body border-0" id="reviews-modal_body">
               
             </div>
             
@@ -285,7 +240,7 @@
     @endsection
     @section('script')
     <script>
-     
+        
         function selectBook(id){
             $(".book").removeClass("active-book");
             $("#book_"+id).addClass("active-book");
@@ -306,14 +261,30 @@
                 type:"POST",
                 data:{"_token":"{{csrf_token()}}","provider_id":$("#provider_id").val()},
                 success : function(res){
-                    $("#modal_body").html("");
+                    $("#reviews-modal_body").html("");
 
-                    $("#modal_body").html(res);
+                    $("#reviews-modal_body").html(res);
                 }
             });
         })
+        function checkers() {
+           
+    $.ajax({
+             url:"{{route('service_check')}}",
+             type:"GET",
+           data:{service_id:$('input[name="service_id"]:checked').val(),provider_id:$("#book_id").val()},
+             success : function (re) {
+                 $(".price").html(re.providerService.price + " USD");
+                  $("#service_description").html(re.providerService.service.description)
+               
+                 $("#price").val(re.providerService.price);
+             }
+         });
+                
+            }
         $(document).ready(function () {
-       
+           selectBook($('.active-book').attr("id").split("_")[1]);
+           
             $('.freelance-slider').slick({
                 infinite: true,
                 slidesToShow: 5,
