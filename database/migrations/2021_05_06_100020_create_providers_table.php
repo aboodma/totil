@@ -16,7 +16,7 @@ class CreateProvidersTable extends Migration
         Schema::create('providers', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->longText('about_me')->nullable()->default('none');
+            $table->longText('about_me');
             $table->bigInteger('provider_type_id');
             $table->bigInteger('country_id');
             $table->text('video');

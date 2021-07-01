@@ -15,8 +15,8 @@ class CreateProviderTypesTable extends Migration
     {
         Schema::create('provider_types', function (Blueprint $table) {
             $table->id();
-            $table->text('name')->nullable()->default('text');
-            $table->text('description')->nullable()->default('text');
+            $table->text('name');
+            $table->text('description');
             $table->timestamps();
         });
     }

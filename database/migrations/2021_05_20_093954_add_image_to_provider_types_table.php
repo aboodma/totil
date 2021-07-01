@@ -14,7 +14,7 @@ class AddImageToProviderTypesTable extends Migration
     public function up()
     {
         Schema::table('provider_types', function (Blueprint $table) {
-           $table->text('image')->nullable()->default('images/artsi3d.jpg');
+           $table->text('image');
         });
     }
 
