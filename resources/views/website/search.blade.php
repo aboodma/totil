@@ -62,7 +62,7 @@
         <div class="row">
             @foreach ($providers as $provider)
             <div class="col-md-3">
-                <a href="{{route('provider_profile',$provider->provider->id)}}">
+                <a href="{{route('provider_profile',$provider->provider->slug)}}">
                     <div class="freelancer">
                         <img src="{{asset($provider->avatar)}}">
                         

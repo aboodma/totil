@@ -47,7 +47,7 @@
            @if($providers->count() != 0)
                 @foreach ($providers->where('is_approved',true) as $provider)
                 <div class="col-md-3">
-                    <a href="{{route('provider_profile',$provider->id)}}">
+                    <a href="{{route('provider_profile',$provider->slug)}}">
                       <div class="freelancer">
                         <div>
                             <div class="top-right p-1 text-center">

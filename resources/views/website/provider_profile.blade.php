@@ -1,10 +1,15 @@
 @extends('layouts.website')
+@section('title',$provider->user->name)
 @section('style')
 <style>
     .slick-track{
         float: left;
     }
 </style>
+
+<script src="https://unpkg.com/wavesurfer.js"></script>
+
+
 @endsection
 @section('content')
 <div class="services-wrapper bg-white py-5">
@@ -131,7 +136,7 @@
                   
                     <div class="col-md-12">
                         <br>
-                        <form action="{{route('payment_info')}}" method="POST">
+                        <form action="{{route('selectPayment')}}" method="POST">
                             <input type="hidden" name="price" id="price">
                             <input type="hidden" name="from" value="none">
                             <input type="hidden" name="to" value="none">
@@ -189,7 +194,7 @@
                 <div class="row freelance-slider">
                     @foreach (\App\Provider::where('provider_type_id',$provider->ProviderType->id)->get()->take(10) as $provider)
                     <div class="col">
-                        <a href="{{route('provider_profile',$provider->id)}}">
+                        <a href="{{route('provider_profile',$provider->slug)}}">
                             <div class="freelancer ">
                                 <div>
                                     <div class="top-right p-1 text-center">
@@ -239,7 +244,9 @@
       </div>
     @endsection
     @section('script')
-    <script>
+
+
+  <script>
         
         function selectBook(id){
             $(".book").removeClass("active-book");

@@ -7,6 +7,7 @@ use App\Notification;
 use App\Order;
 use App\OrderDetail;
 use App\OrderReview;
+use App\Wallet;
 use App\ProviderType;
 use App\BookService;
 use Crypt;
@@ -39,8 +40,9 @@ class HomeController extends Controller
       }
 
 
-     public function provider_profile(Provider $provider)
+     public function provider_profile($slug)
      {
+        $provider = Provider::where('slug',$slug)->first();
         return view('website.provider_profile',compact('provider'));
      }
 
@@ -81,7 +83,13 @@ class HomeController extends Controller
         $order->total_price = $request->price;
         $order->status = 2;
         $order->is_public = 1;
-        
+         if ($request->payment_method == "wallet") {
+            $wallet = new Wallet();
+            $wallet->user_id = auth()->user()->id;
+            $wallet->transaction_type = 1 ;
+            $wallet->amount = $order->total_price;
+            $wallet->save();
+         }
         if ($order->save()) {
             $order_details = new OrderDetail();
             $order_details->order_id = $order->id;
@@ -133,6 +141,18 @@ class HomeController extends Controller
     public function be_our_partner()
     {
        return view('website.be_partner');
+    }
+    public function selectPayment(Request $request)
+    {
+       return view('website.selectPayment',compact('request'));
+    }
+    public function checkPayment(Request $request)
+    {
+      if ($request->payment_method == "wallet") {
+         return $this->pay($request);
+      }else{
+         return view('website.payment_info',compact('request'));
+      }
     }
     public function provider_request(Request $request)
     {

@@ -55,20 +55,21 @@
 </div>
 <div class="modal fade" id="AudioModal" tabindex="-1" role="dialog" aria-labelledby="AudioModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header border-0">
+    <div class="modal-content" style="background-color: #04808b">
+      {{-- <div class="modal-header border-0">
         <h5 class="modal-title" id="ModalLabel">{{__(' Voice Sample')}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
+      </div> --}}
       <div class="modal-body border-0" id="modal_body">
         @if($book->audio_simple != null)
         <div class="row">
           <div class="col-md-12">
-            <audio class="form-control"  controls id="audio_{{$book->id}}">
+            <div id="waveform"></div>
+            {{-- <audio class="form-control"  controls id="audio_{{$book->id}}">
               <source src="{{asset($book->audio_simple)}}" type="audio/mp3">
-            </audio> 
+            </audio>  --}}
           </div>
         </div>
         @endif
@@ -78,12 +79,46 @@
     </div>
   </div>
 </div>
+
+
+
 <script>
   
  $(document).ready(function(){
   checkers();
- });
+  
+    // wavesurfer.on('ready', function () {
+    //     wavesurfer.play();
+    // });
+    var wavesurfer = WaveSurfer.create({
+              container: '#waveform',
+              waveColor: '#D9DCFF',
+              progressColor: '#04545B',
+              cursorColor: '#4353FF',
+              barWidth: 3,
+              barRadius: 3,
+              cursorWidth: 1,
+              height: 100,
+              barGap: 2
             
+          });
+     wavesurfer.load("{{asset($book->audio_simple)}}");
+
+    $("#AudioModal").on('hidden.bs.modal', function () {
+            wavesurfer.stop();
+        });
+        $("#AudioModal").on('show.bs.modal', function () {
+          
+     wavesurfer.on('ready',function () {
+      //  console.log(wavesurfer.isReady);
+      wavesurfer.play();
+     })
+        });
+        
+        
+    });
+    
+           
   $(".service_select").click(function(){
            
 

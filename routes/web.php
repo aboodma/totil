@@ -21,7 +21,7 @@ Auth::routes();
 
 //Web Routes
 Route::get('search','HomeController@search')->name('search');
-Route::get('star/{provider}','HomeController@provider_profile')->name('provider_profile');
+Route::get('star/{slug}','HomeController@provider_profile')->name('provider_profile');
 Route::get('dashboard','HomeController@customer_dashboard')->name('customer_dashboard');
 Route::post('checkout','HomeController@checkout')->name('checkout')->middleware('auth');
 Route::post('payment_info','HomeController@payment_info')->name('payment_info')->middleware('auth');
@@ -36,6 +36,8 @@ Route::get('featured','HomeController@featured')->name('featured');
 Route::post('reviews','HomeController@reviews')->name('reviews');
 Route::post('notify/read','NotificationController@read')->name('notify_read');
 Route::get('setLocale/{locale}','HomeController@changeLocale')->name('ChangeLocale');
+Route::post('selectPayment','HomeController@selectPayment')->name('selectPayment')->middleware('auth');
+Route::post('checkPayment','HomeController@checkPayment')->name('checkPayment')->middleware('auth');
 //ws routes
 Route::get('/service_check','ProviderServiceController@service_check')->name('service_check');
 Route::post('/book','BookController@showBookServices')->name('book_show');
@@ -47,11 +49,13 @@ Route::post('UpdatePrfoile','CustomerController@UpdatePrfoile')->name('UpdatePrf
 Route::get('myOrders','CustomerController@orders')->name('orders');
 Route::get('OrderTracking/{id}','CustomerController@OrderTracking')->name('OrderTracking');
 Route::get('videos','CustomerController@videos')->name('videos');
+Route::get('wallet','CustomerController@wallet')->name('wallet');
 Route::post('rate','OrderReviewController@rateOrder')->name('rate_order');
 Route::get('myFavoritList','FavoritController@favorits')->name('myFavoritList');
 Route::post('addToFavorit','FavoritController@addToFavorit')->name('addToFavorit');
 Route::post('removeFromFavorit','FavoritController@removeFromFavorit')->name('removeFromFavorit');
-
+Route::post('payForFunds','CustomerController@payForFunds')->name('payForFunds');
+Route::post('payFunds','CustomerController@payFunds')->name('payFunds');
 });
 
 //Admin Routes

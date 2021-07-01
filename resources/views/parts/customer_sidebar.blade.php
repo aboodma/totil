@@ -27,6 +27,10 @@
                   href="{{route('customer.orders')}} ">
                   <i class="fas fa-book mr-2"></i>  {{__('My Books')}}
               </a>
+              <a class="dropdown-item py-2 @if (Route::is('customer.wallet')) active   @endif"
+                  href="{{route('customer.wallet')}} ">
+                  <i class="fas fa-book mr-2"></i>  {{__('My Wallet')}}
+              </a>
               
               <a class="dropdown-item py-2 @if (Route::is('customer.myFavoritList')) active   @endif"
                   href="{{route('customer.myFavoritList')}} ">

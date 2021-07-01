@@ -100,11 +100,11 @@
 
                         </div>
                         @endif
-                        <a href="{{route('provider_profile',$provider->id)}}">
+                        <a href="{{route('provider_profile',$provider->slug)}}">
                             <img src="{{asset($provider->user->avatar)}}">
                         </a>
                     </div>
-                    <a href="{{route('provider_profile',$provider->id)}}">
+                    <a href="{{route('provider_profile',$provider->slug)}}">
                         <div class="freelancer-footer">
 
                             <h5 style="padding: 0px;">{{$provider->user->name}}
@@ -164,11 +164,11 @@
 
                                 </div>
                                 @endif
-                                <a href="{{route('provider_profile',$provider->id)}}">
+                                <a href="{{route('provider_profile',$provider->slug)}}">
                                     <img src="{{asset($provider->user->avatar)}}">
                                 </a>
                             </div>
-                            <a href="{{route('provider_profile',$provider->id)}}">
+                            <a href="{{route('provider_profile',$provider->slug)}}">
                                 <div class="freelancer-footer">
 
                                     <h5 style="padding: 0px;">{{$provider->user->name}}
