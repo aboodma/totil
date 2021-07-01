@@ -19,7 +19,7 @@ class AddApiTokenColToUsers extends Migration
                         ->nullable()
                         ->default(null);
             $table->text('mobile_token')->after('api_token')
-                        ->unique()
+                        
                         ->nullable()
                         ->default(null);
 
