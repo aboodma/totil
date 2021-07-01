@@ -35,8 +35,9 @@ class ProviderController extends Controller
 
     public function update_profile(Request $request)
     {
-      
+        $slug = slugify($request->name);
        $provider = auth()->user()->provider;
+       $provider->slug = $slug;
        $provider->about_me = $request->about_me;
        $provider->provider_type_id = $request->provider_type;
        $provider->country_id = $request->country_id;

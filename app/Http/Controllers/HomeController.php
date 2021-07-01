@@ -186,7 +186,7 @@ class HomeController extends Controller
    }
      if ($user) {
       $provider = new Provider();
-     
+         $slug = slugify($request->name);
          $random = Str::random(40);
          $file = $request->file('video');     
          $filename = $file->getClientOriginalName();
@@ -202,7 +202,7 @@ class HomeController extends Controller
      
    
         $provider->user_id = $user->id;
-      
+         $provider->slug = $slug;
         $provider->about_me = $request->about_me;
         $provider->provider_type_id = $request->provider_type_id;
         $provider->country_id = $request->country_id;
