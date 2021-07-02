@@ -15,7 +15,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
+        $books = auth()->user()->provider->books;
         return view('website.provider.books',compact('books'));
     }
 
@@ -88,7 +88,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        return view('website.provider.show_book',compact('book'));
     }
 
     /**
@@ -99,7 +99,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        return view('website.provider.edit_book',compact('book'));
     }
 
     /**
@@ -111,7 +111,48 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $random = Str::random(40);
+        //Cover Upload
+        if ($request->has('cover_path')) {
+            $cover_path = $request->file('cover_path');     
+            $filename = $cover_path->getClientOriginalName();
+            $cover = explode('.',$filename);
+            $cover = $random.'.'.$cover_path->extension(); 
+            $cover_file= $cover_path->move(public_path()."/cover/", $cover);
+            $book->cover_path = "/cover/".$cover;
+        }
+        // Audio Upload
+        if ($request->has('audio_simple')) {
+            $audio_simple = $request->file('audio_simple');     
+            $filename = $audio_simple->getClientOriginalName();
+            $audio = explode('.',$filename);
+            $audio = $random.'.'.$audio_simple->extension(); 
+            $audio_file= $audio_simple->move(public_path()."/audio/", $audio);
+            $book->audio_simple  = "/audio/".$audio ;
+
+        }
+        // Video Upload
+       if ($request->has('video_simple')) {
+        $video_simple = $request->file('video_simple');     
+        $filename = $video_simple->getClientOriginalName();
+        $video = explode('.',$filename);
+        $video = $random.'.'.$video_simple->extension(); 
+        $video_file= $video_simple->move(public_path()."/video/", $video);
+        $book->video_simple  = "/video/".$video ;
+        
+       }
+
+     
+      
+       $book->title = $request->title;
+       $book->description = $request->description;
+       $book->publisher = $request->publisher;
+       $book->release_year  = $request->release_year ;
+       $book->pages_count  = $request->pages_count ;
+     
+       if($book->save()){
+           return redirect()->back();
+       }
     }
 
     /**

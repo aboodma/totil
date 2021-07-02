@@ -143,6 +143,9 @@ Route::group(['prefix'=>'provider','as'=>'provider.','middleware'=>'provider'], 
   Route::get('/books/create','BookController@create')->name('books.create');
   Route::post('/books/store','BookController@store')->name('books.store');
   Route::get('/books/service/{book}','BookServiceController@create')->name('books.service.create');
+  Route::get('/books/edit/{book}','BookController@edit')->name('books.service.edit');
+  Route::get('/books/show/{book}','BookController@show')->name('books.service.show');
+  Route::post('/books/update/{book}','BookController@update')->name('books.service.update');
   Route::post('/books/service/store/{book}','BookServiceController@store')->name('books.service.store');
   Route::get('/orders/{status}','ProviderController@orders')->name('orders');
   Route::get('/orders/procced/{order}','ProviderController@orders_procced')->name('orders_procced');

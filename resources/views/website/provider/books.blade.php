@@ -59,7 +59,9 @@
                                        
                                         
                                   
-                                         <td>
+                                         <td nowrap>
+                                            <a href="{{route('provider.books.service.show',$book->id)}}" class="btn btn-success btn-sm"><i class="fas fa-eye"></i> </a>
+                                            <a href="{{route('provider.books.service.edit',$book->id)}}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i> </a>
                                             <a href="{{route('provider.books.service.create',$book->id)}}" class="btn btn-success btn-sm"><i class="fas fa-plus-square"></i> </a>
                                         </td> 
                                     </tr>
