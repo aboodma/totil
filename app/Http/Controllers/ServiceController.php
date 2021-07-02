@@ -41,6 +41,7 @@ class ServiceController extends Controller
         $service->name  =  $request->name;
         $service->description  = $request->description;
         $service->duration  = 0 ;
+        $service->image  = "no Image" ;
         $service->is_video  = $request->is_video ;
         if ($service->save()) {
             InputTransaction::create_input($request->name);

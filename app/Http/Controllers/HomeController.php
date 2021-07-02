@@ -8,6 +8,7 @@ use App\Order;
 use App\OrderDetail;
 use App\OrderReview;
 use App\Wallet;
+use VideoThumbnail;
 use App\ProviderType;
 use App\BookService;
 use Crypt;
@@ -199,8 +200,8 @@ class HomeController extends Controller
          // ->save("provider/".$random.'.webm');
          // unlink($path.'/'.$newName);
          $provider->video = $newName;
-     
-   
+         $thumb = VideoThumbnail::createThumbnail(public_path($newName), public_path('uploads/thumbs/'), $random.'.jpg', 0, 540, 902);
+         $provider->video_thumpnail = 'uploads/thumbs/'.$random.".jpg";
         $provider->user_id = $user->id;
          $provider->slug = $slug;
         $provider->about_me = $request->about_me;
