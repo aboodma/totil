@@ -21,6 +21,13 @@
                 <li class="breadcrumb-item active font-weight-bold" aria-current="page">{{$provider->user->name}}</li>
               </ol>
         </div>
+        <div class="row d-inline d-none d-sm-block d-md-none">
+            <div class="col-md-12">
+               
+                <h2 class="">{{$provider->user->name}} <i class="fas fa-check-circle text-primary" style="font-size: large;"></i>
+                </h2>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-3">
                 <img style="position: absolute;
@@ -44,8 +51,8 @@
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="mb-0 pb-0
-                        ">{{$provider->user->name}}</h2>
+                        <h2 class="d-none d-lg-block">{{$provider->user->name}} <i class="fas fa-check-circle text-primary" style="font-size: large;"></i>
+                        </h2>
                         <span class="pb-2 mb-2">{{_ti($provider->Country->name)}} / {{_ti($provider->ProviderType->name)}}</span>
                         <p class="pt-2">{{$provider->about_me}}</p>
                         <p style="font-weight: bold;color: #04808B;"><i class="fa fa-clock-o" style="color: #04808B;font-size: initial;"></i> {{__('Replies in 5 days')}}</p>

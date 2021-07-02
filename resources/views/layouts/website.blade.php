@@ -46,7 +46,9 @@
     <nav class="navbar navbar-expand-lg navbar-light topbar  shadow-sm bg-white osahan-nav-top px-1  ">
         <div class="container">
 
-            <a class="navbar-brand" href="{{route('welcome')}}"><img src="{{asset('images/logo.png')}}" alt=""></a>
+            <a class="navbar-brand d-none d-lg-block" href="{{route('welcome')}}"><img src="{{asset('images/logo.png')}}" alt=""></a>
+            <a class="navbar-brand d-lg-none  m-auto  pb-3" href="{{route('welcome')}}">
+                <img style="height: 30px;" src="{{asset('images/logo.png')}}" alt=""></a>
 
             <form action="{{route('search')}}" method="GET" class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
@@ -63,8 +65,8 @@
             </form>
 
             <ul class="navbar-nav align-items-center ml-auto">
-                <li class="nav-item dropdown no-arrow no-caret mr-3 dropdown-notifications d-sm-none">
-                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" href="#" id="searchDropdown"
+                <li class="nav-item dropdown no-arrow no-caret mr-1 dropdown-notifications d-sm-none">
+                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle p-1" href="#" id="searchDropdown"
                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-search fa-fw"></i>
                     </a>
@@ -86,22 +88,22 @@
                     </div>
                 </li>
                 @guest
-                <li class="nav-item dropdown no-arrow no-caret mr-3 ">
-                    <a class="btn btn-outline-danger pink-btn" id="navbarDropdownAlerts" href="{{route('login')}}"
+                <li class="nav-item dropdown no-arrow no-caret mr-1 ">
+                    <a class="btn btn-outline-danger pink-btn p-1" style="word-break: keep-all;white-space: nowrap;" id="navbarDropdownAlerts" href="{{route('login')}}"
                         role="button">
                         {{__('Login')}}
                     </a>
 
                 </li>
-                <li class="nav-item dropdown no-arrow no-caret mr-3 ">
-                    <a class="btn btn-outline-secondary sec-btn" id="navbarDropdownAlerts" href="{{route('register')}}"
+                <li class="nav-item dropdown no-arrow no-caret mr-1 ">
+                    <a class="btn btn-outline-secondary sec-btn p-1" style="word-break: keep-all;white-space: nowrap;" id="navbarDropdownAlerts" href="{{route('register')}}"
                         role="button">
                         {{__('Sign Up')}}
                     </a>
 
                 </li>
-                <li class="nav-item dropdown no-arrow no-caret mr-3 ">
-                    <a class="btn btn-outline-secondary sec-btn" href="{{route('be_our_partner')}}" role="button">
+                <li class="nav-item dropdown no-arrow no-caret mr-1 ">
+                    <a class="btn btn-outline-secondary sec-btn p-1" style="word-break: keep-all;white-space: nowrap;" href="{{route('be_our_partner')}}" role="button">
                         {{__('Be Our Partner')}}
                     </a>
 
@@ -109,16 +111,16 @@
                 @endguest
                 
                 @auth
-                <li class="nav-item dropdown no-arrow no-caret mr-3 ">
-                    <a class="btn btn-outline-secondary sec-btn" id="navbarDropdownAlerts"
+                <li class="nav-item dropdown no-arrow no-caret mr-1 ">
+                    <a class="btn btn-outline-secondary sec-btn p-1" style="word-break: keep-all;white-space: nowrap;" id="navbarDropdownAlerts"
                         href="@if(auth()->user()->user_type == 1){{route('provider.dashboard')}} @elseif(auth()->user()->user_type == 0){{route('customer_dashboard')}} @else {{route('admin.home')}}  @endif"
                         role="button">
                         {{__('Profile')}}
                     </a>
 
                 </li>
-                <li class="nav-item dropdown no-arrow no-caret mr-3 dropdown-notifications">
-                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle " style="background: #f1f2f500"
+                <li class="nav-item dropdown no-arrow no-caret mr-1 dropdown-notifications">
+                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle p-1" style="word-break: keep-all;white-space: nowrap;" style="background: #f1f2f500"
                         id="navbarDropdownAlerts" href="javascript:void(0);" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -128,7 +130,7 @@
                             <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
                         </svg>
                         @if( auth()->user()->notifications->where('is_read',0)->count() != 0)
-                        <i style="font-size: smaller;color:#04808B!important" class="fa fa-circle text-success"></i>
+                        <i style="font-size: smaller;color:#04808B  !important" class="fa fa-circle text-success"></i>
                         @endif
                     </a>
                     <div class="dropdown-menu dropdown-menu-right border-0 shadow  "
@@ -172,8 +174,8 @@
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
-                <li class="nav-item dropdown no-arrow no-caret mr-3 dropdown-notifications">
-                    <button class="btn btn-icon btn-transparent-dark dropdown-toggle" style="background: #f1f2f500"
+                <li class="nav-item dropdown no-arrow no-caret mr-4 dropdown-notifications">
+                    <button class="btn btn-icon btn-transparent-dark dropdown-toggle p-1" style="background: #f1f2f500"
                         id="navbarDropdownAlerts" href="{{ route('logout') }}" role="button"
                         onclick="event.preventDefault();document.getElementById('logout-form').submit();"
                         aria-expanded="false">
@@ -190,11 +192,11 @@
 
 
                 @endauth
-                <li class="nav-item dropdown no-arrow no-caret mr-3 dropdown-notifications">
+                <li class="nav-item dropdown no-arrow no-caret mr-4 dropdown-notifications">
                     <a class="btn btn-icon btn-transparent-dark dropdown-toggle  " style="background: #f1f2f500" id="navbarDropdownMessages"
                         href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
-                        <i class="fas fa-globe " style="font-size: 1.2rem;color: #505355"></i>
+                        <i class="fas fa-globe-europe " style="font-size: 1.2rem;color: #04808B ;"></i>
                     </a>
                     <div style="min-width: 9.75rem;" class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up"
                         aria-labelledby="navbarDropdownMessages">
