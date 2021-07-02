@@ -10,7 +10,7 @@
     <meta name="author" content="Gurdeep singh osahan">
     <title>{{__('website_title')}} @yield('title')</title>
 
-    <link rel="icon" type="image/png" href="images/fav.svg">
+    <link rel="icon" type="image/png" href="images/favicon.ico">
 
     <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
