@@ -5,28 +5,7 @@
     <div id="kt_header_menu" class="header-menu header-menu-left header-menu-mobile header-menu-layout-default header-menu-root-arrow">
       <!--begin::Header Nav-->
       <ul class="menu-nav">
-        <li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="click" aria-haspopup="true">
-          <a href="javascript:;" class="menu-link menu-toggle">
-            <span class="menu-text">Dashboard</span>
-            <i class="menu-arrow"></i>
-          </a>
-          <div class="menu-submenu menu-submenu-classic menu-submenu-left">
-            <ul class="menu-subnav">
-              <li class="menu-item" aria-haspopup="true">
-                <a href="index.html" class="menu-link">
-                  <span class="menu-text">Application</span>
-                  <span class="menu-desc"></span>
-                </a>
-              </li>
-              <li class="menu-item" aria-haspopup="true">
-                <a target="_blank" href="https://preview.keenthemes.com/metronic/demo8/builder.html" class="menu-link">
-                  <span class="menu-text">Layout Builder</span>
-                  <span class="menu-desc"></span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </li>
+       
         <li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="click" aria-haspopup="true">
           <a href="javascript:;" class="menu-link menu-toggle">
             <span class="menu-text">Users</span>
