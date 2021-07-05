@@ -12,6 +12,13 @@
    
     
 </div>
+@if(!is_null($book->link))
+<div class=" col-md-12 pt-3">
+   
+  <a class="btn btn-outline-danger pink-btn form-control" href="{{$book->link}}" >Buy The Book From Store <i class="fas fa-cart"></i>  </a>
+
+</div>
+@endif
 @if($book->video_simple != null)
 <div class=" col-md-6 pt-3">
    
