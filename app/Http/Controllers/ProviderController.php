@@ -54,9 +54,8 @@ class ProviderController extends Controller
             $random = Str::random(40);
             $file = $request->file('video');
             $filename = $file->getClientOriginalName();
-            $newName = explode('.',$filename);
             $newName = $random.'.'.$file->extension();
-            $fil= $file->move(public_path(), $newName);
+            $fil= $file->move(public_path()."/ham_videos/", $newName);
             FFMpeg::fromDisk('unoptimized_video')->open('ham_video/'.$newName)
                 ->export()
                 ->save("provider/".$random.'.webm');
@@ -69,8 +68,8 @@ class ProviderController extends Controller
             $filename = $file->getClientOriginalName();
             $avatar = explode('.',$filename);
             $avatar = $random.'.'.$file->extension(); 
-            if($fil= $file->move(public_path(), $avatar)){
-                $user->avatar = $avatar;
+            if($fil= $file->move(public_path()."/uploads/avatars/", $avatar)){
+                $user->avatar = "/uploads/avatars/".$avatar;
                 $user->save();
             }
            }
