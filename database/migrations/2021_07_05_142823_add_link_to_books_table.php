@@ -14,7 +14,7 @@ class AddLinkToBooksTable extends Migration
     public function up()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->text('link');
+            $table->text('link')->nullable();
         });
     }
 
