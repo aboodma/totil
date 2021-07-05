@@ -65,6 +65,12 @@ class ProviderController extends Controller
                 
             FFMpeg::fromDisk('unoptimized_video')
             ->open("ham_video/".$newName)
+            ->addWatermark(function(WatermarkFactory $watermark) {
+                $watermark->fromDisk('public')
+                    ->open('images/logo.png')
+                    ->right(25)
+                    ->bottom(25);
+            })
             ->addFilter(function (VideoFilters $filters) {
                 $filters->resize(new \FFMpeg\Coordinate\Dimension(640, 480));
             })
