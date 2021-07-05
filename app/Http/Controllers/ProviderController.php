@@ -56,8 +56,8 @@ class ProviderController extends Controller
             $file = $request->file('video');
             $filename = $file->getClientOriginalName();
             $newName = $random.'.'.$file->extension();
-            $fil= $file->move(public_path()."/uploads/ham_videos/", $newName);
-            FFMpeg::fromDisk('unoptimized_video')->open('ham_videos/'.$newName)
+            $fil= $file->move(public_path()."/uploads/ham_video/", $newName);
+            FFMpeg::fromDisk('unoptimized_video')->open('ham_video/'.$newName)
                 ->export()->addWatermark(function(WatermarkFactory $watermark) {
                     $watermark->fromDisk('local')
                         ->open('https://totil.net/images/logo.png')
