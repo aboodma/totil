@@ -50,6 +50,19 @@ class ProviderController extends Controller
        if ($provider->save()) {
            $user = auth()->user();
            $user->name = $request->name;
+           if ($request->has('video')) {
+            $random = Str::random(40);
+            $file = $request->file('video');
+            $filename = $file->getClientOriginalName();
+            $newName = explode('.',$filename);
+            $newName = $random.'.'.$file->extension();
+            $fil= $file->move(public_path(), $newName);
+            FFMpeg::fromDisk('unoptimized_video')->open('ham_video/'.$newName)
+                ->export()
+                ->save("provider/".$random.'.webm');
+                unlink($path.'/'.$newName);
+                $provider->video ="uploads/provider/".$random.'.webm';
+           }
            if ($request->has('avatar')) {
             $random = Str::random(40);
             $file = $request->file('avatar');     

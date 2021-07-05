@@ -199,7 +199,7 @@ class HomeController extends Controller
          ->export()
          ->save("provider/".$random.'.webm');
          unlink($path.'/'.$newName);
-         $provider->video = $newName;
+         $provider->video ="uploads/provider/".$random.'.webm';
          $thumb = VideoThumbnail::createThumbnail(public_path($newName), public_path('uploads/thumbs/'), $random.'.jpg', 0, 540, 902);
          $provider->video_thumpnail = 'uploads/thumbs/'.$random.".jpg";
         $provider->user_id = $user->id;
