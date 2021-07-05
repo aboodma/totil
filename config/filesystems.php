@@ -70,7 +70,7 @@ return [
         ],
         'unoptimized_video'=>[
             'driver'=>'local',
-            'root'=>public_path('uploads'),
+            'root'=>public_path('uploads/ham_video/'),
         ]
 
     ],
