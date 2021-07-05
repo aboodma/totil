@@ -15,7 +15,7 @@
 @if(!is_null($book->link))
 <div class=" col-md-12 pt-3">
    
-  <a class="btn btn-outline-danger pink-btn form-control" href="{{$book->link}}" >Buy The Book From Store <i class="fas fa-shopping-cart"></i>  </a>
+  <a class="btn  btn-success  btn-xlg form-control rd-in  p-2 mt-3" href="{{$book->link}}" >Buy The Book From Store <i class="fas fa-shopping-cart"></i>  </a>
 
 </div>
 @endif
