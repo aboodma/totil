@@ -16,7 +16,7 @@ use ProtoneMedia\LaravelFFMpeg\Support\FFMpeg;
 use FFMpeg\Filters\Video\VideoFilters;
 use Illuminate\Support\Str;
 use ProtoneMedia\LaravelFFMpeg\FFMpeg\CopyFormat;
-use ProtoneMedia\LaravelFFMpeg\Filters\WatermarkFactory;
+use ProtoneMedia\LaravelFFMpeg\Filters\WatermarkFactory as WatermarkFactory;
 class ProviderController extends Controller
 {
 
