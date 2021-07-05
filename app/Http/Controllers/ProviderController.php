@@ -64,7 +64,7 @@ class ProviderController extends Controller
             //     ->save("/provider/".$random.'.webm');
                 
             FFMpeg::fromDisk('unoptimized_video')
-            ->open("/uploads/ham_video/".$newName)
+            ->open("ham_video/".$newName)
             ->addFilter(function (VideoFilters $filters) {
                 $filters->resize(new \FFMpeg\Coordinate\Dimension(640, 480));
             })
