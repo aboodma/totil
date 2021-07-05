@@ -56,7 +56,7 @@ class ProviderController extends Controller
             $filename = $file->getClientOriginalName();
             $newName = $random.'.'.$file->extension();
             $fil= $file->move(public_path()."/uploads/ham_videos/", $newName);
-            FFMpeg::fromDisk('unoptimized_video')->open('ham_video/'.$newName)
+            FFMpeg::fromDisk('unoptimized_video')->open('ham_videos/'.$newName)
                 ->export()
                 ->save("/uploads/provider/".$random.'.webm');
                 // unlink($path.'/'.$newName);
