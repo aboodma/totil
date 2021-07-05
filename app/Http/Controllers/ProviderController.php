@@ -60,7 +60,7 @@ class ProviderController extends Controller
             FFMpeg::fromDisk('unoptimized_video')->open('ham_video/'.$newName)
             
                 ->export()
-                ->save("/uploads/provider/".$random.'.webm');
+                ->save("/provider/".$random.'.webm');
                 // unlink($path.'/'.$newName);
                 $provider->video ="uploads/provider/".$random.'.webm';
            }
