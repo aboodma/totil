@@ -193,7 +193,7 @@
                                                 <a href="{{route('customer.OrderTracking',Crypt::encrypt($order->id))}}"
                                                     class="btn btn-info"> {{__('Order Tracking')}} <i class="fa fa-eye"></i>
                                                 </a>
-                                                <a href="{{asset($order->details->provider_message)}}"
+                                                <a download href="{{asset($order->details->provider_message)}}"
                                                     class="btn btn-primary"> {{__('Download File')}} <i class="fa fa-download"></i>
                                                 </a>
                                                 
