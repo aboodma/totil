@@ -61,6 +61,7 @@ class BookController extends Controller
        $book = new Book();
        $book->provider_id = auth()->user()->provider->id;
        $book->title = $request->title;
+       $book->link = $request->link;
        $book->description = $request->description;
        $book->publisher = $request->publisher;
        $book->cover_path = "/cover/".$cover;
@@ -145,6 +146,7 @@ class BookController extends Controller
      
       
        $book->title = $request->title;
+       $book->link = $request->link;
        $book->description = $request->description;
        $book->publisher = $request->publisher;
        $book->release_year  = $request->release_year ;

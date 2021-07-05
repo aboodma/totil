@@ -60,6 +60,10 @@
                                    </div>
                                </div>
                                <div class="form-group">
+                                <label for="">Book Store Link</label>
+                                <input type="url" name="link" id="{{$book->link}}" class="form-control">
+                               </div>
+                               <div class="form-group">
                                 <label for="">Book Cover</label>
                                 <input type="file" name="cover_path" id="" class="form-control">
                                </div>
