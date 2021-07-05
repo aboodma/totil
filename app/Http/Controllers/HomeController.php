@@ -189,19 +189,15 @@ class HomeController extends Controller
       $provider = new Provider();
          $slug = slugify($request->name);
          $random = Str::random(40);
-         $file = $request->file('video');     
+         $random = Str::random(40);
+         $file = $request->file('video');
          $filename = $file->getClientOriginalName();
          $newName = explode('.',$filename);
-         
-         $newName = $random.'.'.$file->getClientOriginalExtension();
+         $newName = $random.'.'.$request->extension;
          $fil= $file->move(public_path(), $newName);
-         FFMpeg::fromDisk('unoptimized_video')->open('ham_video/'.$newName)
-         ->export()
-         ->save("provider/".$random.'.webm');
-         unlink($path.'/'.$newName);
-         $provider->video ="uploads/provider/".$random.'.webm';
          $thumb = VideoThumbnail::createThumbnail(public_path($newName), public_path('uploads/thumbs/'), $random.'.jpg', 0, 540, 902);
          $provider->video_thumpnail = 'uploads/thumbs/'.$random.".jpg";
+         $provider->video = $newName;
         $provider->user_id = $user->id;
          $provider->slug = $slug;
         $provider->about_me = $request->about_me;

@@ -16,8 +16,6 @@ use ProtoneMedia\LaravelFFMpeg\Support\FFMpeg;
 use FFMpeg\Filters\Video\VideoFilters;
 use Illuminate\Support\Str;
 use ProtoneMedia\LaravelFFMpeg\FFMpeg\CopyFormat;
-use ProtoneMedia\LaravelFFMpeg\Filters\WatermarkFactory as WatermarkFactory;
-
 class ProviderController extends Controller
 {
 
@@ -56,31 +54,14 @@ class ProviderController extends Controller
             $random = Str::random(40);
             $file = $request->file('video');
             $filename = $file->getClientOriginalName();
-            $newName = $random.'.'.$file->extension();
-            $fil= $file->move(public_path()."/uploads/ham_video/", $newName);
-            // FFMpeg::fromDisk('unoptimized_video')->open('ham_video/'.$newName)
-            
-            
-            //     ->save("/provider/".$random.'.webm');
-                
-            FFMpeg::fromDisk('unoptimized_video')
-            ->open("ham_video/".$newName)
-            ->addWatermark(function(WatermarkFactory $watermark) {
-                $watermark->fromDisk('public')
-                    ->open('images/logo.png')
-                    ->right(25)
-                    ->bottom(25);
-            })
-            ->addFilter(function (VideoFilters $filters) {
-                $filters->resize(new \FFMpeg\Coordinate\Dimension(640, 480));
-            })
-            ->export()
-            ->toDisk('public')
-            
-            ->save("uploads/provider/".$random.'.mp4');
-                // unlink($path.'/'.$newName);
-                $provider->video ="uploads/provider/".$random.'.mp4';
-           }
+            $newName = explode('.',$filename);
+            $newName = $random.'.'.$request->extension;
+            $fil= $file->move(public_path(), $newName);
+            $thumb = VideoThumbnail::createThumbnail(public_path($newName), public_path('uploads/thumbs/'), $random.'.jpg', 0, 540, 902);
+            $provider->video_thumpnail = 'uploads/thumbs/'.$random.".jpg";
+            $provider->video = $newName;
+     
+            }
            if ($request->has('avatar')) {
             $random = Str::random(40);
             $file = $request->file('avatar');     
