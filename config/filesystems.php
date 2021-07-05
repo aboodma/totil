@@ -64,9 +64,9 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
         ],
-        'unoptimized_video'=>[
+        'public'=>[
             'driver'=>'local',
-            'root'=>public_path('uploads/ham_video'),
+            'root'=>public_path(),
         ],
         'unoptimized_video'=>[
             'driver'=>'local',
