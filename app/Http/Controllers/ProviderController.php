@@ -16,6 +16,7 @@ use ProtoneMedia\LaravelFFMpeg\Support\FFMpeg;
 use FFMpeg\Filters\Video\VideoFilters;
 use Illuminate\Support\Str;
 use ProtoneMedia\LaravelFFMpeg\FFMpeg\CopyFormat;
+use ProtoneMedia\LaravelFFMpeg\Filters\WatermarkFactory;
 class ProviderController extends Controller
 {
 
@@ -57,7 +58,12 @@ class ProviderController extends Controller
             $newName = $random.'.'.$file->extension();
             $fil= $file->move(public_path()."/uploads/ham_videos/", $newName);
             FFMpeg::fromDisk('unoptimized_video')->open('ham_videos/'.$newName)
-                ->export()
+                ->export()->addWatermark(function(WatermarkFactory $watermark) {
+                    $watermark->fromDisk('local')
+                        ->open('https://totil.net/images/logo.png')
+                        ->right(25)
+                        ->bottom(25);
+                })
                 ->save("/uploads/provider/".$random.'.webm');
                 // unlink($path.'/'.$newName);
                 $provider->video ="uploads/provider/".$random.'.webm';
