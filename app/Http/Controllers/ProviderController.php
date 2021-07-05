@@ -58,11 +58,7 @@ class ProviderController extends Controller
             $newName = $random.'.'.$file->extension();
             $fil= $file->move(public_path()."/uploads/ham_video/", $newName);
             FFMpeg::fromDisk('unoptimized_video')->open('ham_video/'.$newName)
-            ->addWatermark(function(WatermarkFactory $watermark) {
-                $watermark->fromDisk('public')->open('images/logo.png')
-                    ->horizontalAlignment(WatermarkFactory::LEFT, 25)
-                    ->verticalAlignment(WatermarkFactory::TOP, 25);
-            })
+            
                 ->export()
                 ->save("/uploads/provider/".$random.'.webm');
                 // unlink($path.'/'.$newName);
