@@ -71,9 +71,9 @@ class ProviderController extends Controller
             ->export()
             ->toDisk('public')
             ->inFormat(new \FFMpeg\Format\Video\X264)
-            ->save("uploads/provider/".$random.'.webm');
+            ->save("uploads/provider/".$random.'.mkv');
                 // unlink($path.'/'.$newName);
-                $provider->video ="uploads/provider/".$random.'.webm';
+                $provider->video ="uploads/provider/".$random.'.mkv';
            }
            if ($request->has('avatar')) {
             $random = Str::random(40);
