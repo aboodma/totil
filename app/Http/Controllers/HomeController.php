@@ -195,10 +195,10 @@ class HomeController extends Controller
          
          $newName = $random.'.'.$file->getClientOriginalExtension();
          $fil= $file->move(public_path(), $newName);
-         // FFMpeg::fromDisk('unoptimized_video')->open('ham_video/'.$newName)
-         // ->export()
-         // ->save("provider/".$random.'.webm');
-         // unlink($path.'/'.$newName);
+         FFMpeg::fromDisk('unoptimized_video')->open('ham_video/'.$newName)
+         ->export()
+         ->save("provider/".$random.'.webm');
+         unlink($path.'/'.$newName);
          $provider->video = $newName;
          $thumb = VideoThumbnail::createThumbnail(public_path($newName), public_path('uploads/thumbs/'), $random.'.jpg', 0, 540, 902);
          $provider->video_thumpnail = 'uploads/thumbs/'.$random.".jpg";
