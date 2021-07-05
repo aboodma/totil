@@ -59,7 +59,11 @@ class ProviderController extends Controller
         $provider->video = $newName;
  
         }
-        if ($request->has('avatar')) {
+        
+       if ($provider->save()) {
+           $user = auth()->user();
+           $user->name = $request->name;
+           if ($request->has('avatar')) {
             $random = Str::random(40);
             $file = $request->file('avatar');     
             $filename = $file->getClientOriginalName();
@@ -70,10 +74,6 @@ class ProviderController extends Controller
                 $user->save();
             }
            }
-       if ($provider->save()) {
-           $user = auth()->user();
-           $user->name = $request->name;
-          
           
        }
        return redirect()->route('provider.profile');
