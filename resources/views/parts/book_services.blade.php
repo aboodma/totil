@@ -135,7 +135,7 @@
         "name": "Risin' High (feat Raashan Ahmad)",
         "artist": "Ancient Astronauts",
         "album": "We Are to Answer",
-        "url": "https://521dimensions.com/song/Ancient Astronauts - Risin' High (feat Raashan Ahmad).mp3",
+        "url": "{{asset($book->audio_simple)}}",
         "cover_art_url": ""
       }
     ]
