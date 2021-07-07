@@ -1,3 +1,4 @@
+
 <div class="col-md-12">
   <h5><b>{{ucfirst($book->title)}}</b> </h5>
   <p><b>Description :</b>{{$book->description}}</p>
@@ -62,23 +63,57 @@
 </div>
 <div class="modal fade" id="AudioModal" tabindex="-1" role="dialog" aria-labelledby="AudioModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content" style="background-color: #04808b">
+    <div class="modal-content" style="background-image: url('{{asset($book->cover_path)}}');background-size:cover;">
       {{-- <div class="modal-header border-0">
         <h5 class="modal-title" id="ModalLabel">{{__(' Voice Sample')}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div> --}}
-      <div class="modal-body border-0" id="modal_body">
+      <div class="modal-body border-0" style="background-color: #04808b61;height: 500px;" id="modal_body">
         @if($book->audio_simple != null)
-        <div class="row">
+        <div class="row" style="margin-top: 70%;">
           <div class="col-md-12">
-            <div id="waveform"></div>
-            {{-- <audio class="form-control"  controls id="audio_{{$book->id}}">
-              <source src="{{asset($book->audio_simple)}}" type="audio/mp3">
-            </audio>  --}}
+            <div id="single-song-player">
+              <div class="row justify-content-center mb-4">
+                <div class="amplitude-play-pause" >
+                  <button type="button" class="btn btn-outline-light btn-icon" style="background-color: transparent;
+                  height:calc( (3rem * 1.5) + (0.5rem * 2) + (2px) ) !important;
+                  width:calc( (3rem * 1.5) + (0.5rem * 2) + (2px) ) !important" id="play-pause">
+                    <i class="fa fa-play" style="font-size: 25px;" aria-hidden="true"></i>
+                  </button>
+              </div>
+              </div>
+              
+            </div>
           </div>
         </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class=" row justify-content-center mr-0" style="margin-right: 0px;">
+            <div class="col-md-12">
+            <progress class="amplitude-song-played-progress" id="song-played-progress"></progress>
+
+            </div>
+            <div class="col-md-12">
+              <div class="row " style="max-width: 100%;">
+                <div class="col-md-12 ">
+                  <div class="row justify-content-between" style="margin-left: auto;">
+                    <span class="current-time">
+                      <span class="amplitude-current-minutes"></span>:<span class="amplitude-current-seconds"></span>
+                    </span>
+                    <span class="duration">
+                      <span class="amplitude-duration-minutes"></span>:<span class="amplitude-duration-seconds"></span>
+                    </span>
+                  </div>
+                  
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
         @endif
      
       </div>
@@ -88,43 +123,42 @@
 </div>
 
 
-
 <script>
-  
+ Amplitude.init({
+    "bindings": {
+      37: 'prev',
+      39: 'next',
+      32: 'play_pause'
+    },
+    "songs": [
+      {
+        "name": "Risin' High (feat Raashan Ahmad)",
+        "artist": "Ancient Astronauts",
+        "album": "We Are to Answer",
+        "url": "https://521dimensions.com/song/Ancient Astronauts - Risin' High (feat Raashan Ahmad).mp3",
+        "cover_art_url": ""
+      }
+    ]
+  });
+
+  window.onkeydown = function(e) {
+      return !(e.keyCode == 32);
+  };
+
+  /*
+    Handles a click on the song played progress bar.
+  */
+  document.getElementById('song-played-progress').addEventListener('click', function( e ){
+    var offset = this.getBoundingClientRect();
+    var x = e.pageX - offset.left;
+
+    Amplitude.setSongPlayedPercentage( ( parseFloat( x ) / parseFloat( this.offsetWidth) ) * 100 );
+  });
+
  $(document).ready(function(){
   checkers();
   
-    // wavesurfer.on('ready', function () {
-    //     wavesurfer.play();
-    // });
-    var wavesurfer = WaveSurfer.create({
-              container: '#waveform',
-              waveColor: '#D9DCFF',
-              progressColor: '#04545B',
-              cursorColor: '#4353FF',
-              barWidth: 3,
-              barRadius: 3,
-              cursorWidth: 1,
-              height: 100,
-              barGap: 2
-            
-          });
-     wavesurfer.load("{{asset($book->audio_simple)}}");
 
-    $("#AudioModal").on('hidden.bs.modal', function () {
-            wavesurfer.stop();
-        });
-        $("#AudioModal").on('show.bs.modal', function () {
-          
-     wavesurfer.on('ready',function () {
-      //  console.log(wavesurfer.isReady);
-      wavesurfer.play();
-     })
-        });
-        
-        
-    });
-    
            
   $(".service_select").click(function(){
            
@@ -142,5 +176,6 @@
          });
        //    $('#'+this.id).parent().toggleClass('active');
        });
+      });
 
 </script>

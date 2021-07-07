@@ -1,6 +1,7 @@
 @extends('layouts.website')
 @section('title',$provider->user->name)
 @section('style')
+<link rel="stylesheet" href="{{asset('css/audio_player.css')}}">
 <style>
     .slick-track{
         float: left;
@@ -8,7 +9,7 @@
 </style>
 
 <script src="https://unpkg.com/wavesurfer.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js" integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 @endsection
 @section('content')
@@ -251,7 +252,7 @@
       </div>
     @endsection
     @section('script')
-
+    <script src="{{asset('js/amplitudejs/dist/amplitude.js')}}"></script>
 
   <script>
         
