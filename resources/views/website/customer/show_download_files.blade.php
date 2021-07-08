@@ -175,7 +175,7 @@
                                        <td>{{$file->bookService->service->name}}</td>
                                        
                                        <td>{{$file->bookService->book->provider->user->name}}</td>
-                                       <td>{{ (get_headers(asset($file->file_path), true)['Content-Length'] / 2048)}} KB  <br> {{getUrlMimeType(asset($file->file_path))}}</td>
+                                       <td>{{ (get_headers(asset($file->file_path), true)['Content-Length'] / 3072)}} MB  <br> {{getUrlMimeType(asset($file->file_path))}}</td>
                                        <td nowrap>
                                     
                                         <a download href="{{asset($file->file_path)}}" class="btn btn-success btn-sm"><i class="fas fa-download"></i> </a>       
