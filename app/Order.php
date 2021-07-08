@@ -42,7 +42,7 @@ class Order extends Model
     }
     public function bookService()
     {
-        return $this->belongsTo(bookService::class);
+        return $this->belongsTo(BookService::class);
     }
     
 }
