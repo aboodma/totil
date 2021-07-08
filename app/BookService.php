@@ -14,4 +14,9 @@ class BookService extends Model
     {
         return $this->belongsTo(Book::class);
     }
+    public function files()
+    {
+        return $this->hasMany(BookServiceFile::class);
+    }
+
 }

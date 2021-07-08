@@ -78,8 +78,12 @@
                                        <td><a target="_blank" href="{{asset($service->file_path)}}">Click Here</a></td>
                                        <td>{{$service->price}}</td>
                                        <td nowrap>
-                                        <a href="{{route('provider.books.service.show',$book->id)}}" class="btn btn-success btn-sm"><i class="fas fa-eye"></i> </a>       
-                                        <a href="{{route('provider.books.service.show',$book->id)}}" class="btn btn-success btn-sm"><i class="fas fa-trash"></i> </a>       
+                                     <form action="{{route('provider.books.service.delete',$service->id)}}" method="POST">
+                                        @method("DELETE")
+                                        @csrf
+                                        <a href="{{route('provider.book_service_files',$service->id)}}" class="btn btn-success btn-sm"><i class="fas fa-eye"></i> </a>       
+                                        <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-trash"></i> </button>       
+                                     </form>
                                        </td>
                                        
                                    </tr>

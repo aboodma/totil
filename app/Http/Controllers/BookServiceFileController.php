@@ -2,27 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Order;
+use App\BookServiceFile;
+use App\BookService;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class BookServiceFileController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function showOrderDetails(Request $request)
+    public function index(BookService $bookService)
     {
-        // return $request->all();
-        $order = Order::find($request->order_id);
-        return view('parts.order_details',compact('order'));
-    }
-
-    public function index()
-    {
-        $orders = Order::all();
-        return view('backend.orders.index',compact('orders'));
+        $files =  $bookService->files;
+        $book = $bookService->book;
+        return view('website.provider.show_book_service_files',compact('files','book'));
     }
 
     /**
@@ -41,31 +36,29 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function customerOrderDownloadFiles(Order $order)
+    public function store(Request $request)
     {
-       $files =  $order->bookService->files;
-       $book =  $order->book;
-       return  view('website.customer.show_download_files',compact('files','book'));
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Order  $order
+     * @param  \App\BookServiceFile  $bookServiceFile
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(BookServiceFile $bookServiceFile)
     {
-        return view('backend.orders.show',compact('order'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Order  $order
+     * @param  \App\BookServiceFile  $bookServiceFile
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit(BookServiceFile $bookServiceFile)
     {
         //
     }
@@ -74,10 +67,10 @@ class OrderController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Order  $order
+     * @param  \App\BookServiceFile  $bookServiceFile
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, BookServiceFile $bookServiceFile)
     {
         //
     }
@@ -85,10 +78,10 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Order  $order
+     * @param  \App\BookServiceFile  $bookServiceFile
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy(BookServiceFile $bookServiceFile)
     {
         //
     }

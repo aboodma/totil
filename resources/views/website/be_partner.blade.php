@@ -63,7 +63,7 @@
                     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                     <div class="col-md-6">
-                        <input id="name" type="text" class="form-control rd-in @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        <input id="name" type="text" required class="form-control rd-in @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                         @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -77,7 +77,7 @@
                     <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                     <div class="col-md-6">
-                        <input id="email" type="email" class="form-control rd-in @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                        <input id="email" type="email" required class="form-control rd-in @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                         @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -91,7 +91,7 @@
                     <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                     <div class="col-md-6">
-                        <input id="password" type="password" class="form-control rd-in @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                        <input id="password" type="password" required class="form-control rd-in @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                         @error('password')
                             <span class="invalid-feedback" role="alert">
@@ -105,14 +105,14 @@
                     <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                     <div class="col-md-6">
-                        <input id="password-confirm" type="password" class="form-control rd-in" name="password_confirmation" required autocomplete="new-password">
+                        <input id="password-confirm" required type="password" class="form-control rd-in" name="password_confirmation" required autocomplete="new-password">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="" class="col-md-4 col-form-label text-md-right"> {{__('Select Your Job Title')}}</label>
                     <div class="col-md-6">
-                        <select name="provider_type_id" class="form-control" id="">
+                        <select name="provider_type_id" class="form-control" required id="">
                             <option value="">{{__('Please Select')}} </option>
                             @foreach (\App\ProviderType::all() as $type)
 
@@ -129,7 +129,7 @@
                 <div class="form-group row">
                     <label for="" class="col-md-4 col-form-label text-md-right"> {{__('Select Your Country')}}</label>
                     <div class="col-md-6">
-                        <select name="country_id" class="form-control" id="">
+                        <select name="country_id" class="form-control" required id="">
                             <option value="">Please Select </option>
                             @foreach (\App\Country::all() as $country)
 
@@ -146,7 +146,7 @@
                 <div class="form-group row">
                     <label for="" class="col-md-4 col-form-label text-md-right"> {{__('About You')}} </label>
                     <div class="col-md-6">
-                        <textarea name="about_me" class="form-control" id="" cols="30" rows="5"></textarea>
+                        <textarea name="about_me" required class="form-control" id="" cols="30" rows="5"></textarea>
                         @error('about_me')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -159,14 +159,14 @@
                     <label for="name" class="col-md-4 col-form-label text-md-right">{{__('Profile Video')}}</label>
 
                     <div class="col-md-6">
-                        <input type="file" name="video" class="form-control rd-in" accept="video/*" id="">
+                        <input type="file" name="video" required class="form-control rd-in" accept="video/*" id="">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right">{{__('Profile Picture')}}</label>
 
                 <div class="col-md-6">
-                    <input type="file" name="avatar" class="form-control rd-in" accept="image/*" id="">
+                    <input type="file" name="avatar" required class="form-control rd-in" accept="image/*" id="">
             </div>
         </div>
         <div class="form-group row ">

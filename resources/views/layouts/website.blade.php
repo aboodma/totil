@@ -25,9 +25,9 @@
     <link href="{{asset('vendor/select2/css/select2.min.css')}}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    {{-- <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css" integrity="sha384-JvExCACAZcHNJEc7156QaHXTnQL3hQBixvj5RV5buE7vgnNEzzskDtx9NQ4p6BJe" crossorigin="anonymous"> --}}
 
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
-
 
 
     @yield('style')
@@ -87,6 +87,13 @@
                         </form>
                     </div>
                 </li>
+                <li class="nav-item dropdown no-arrow no-caret mr-3 ">
+                    <a class="" style="word-break: keep-all;white-space: nowrap;" id="navbarDropdownAlerts" href="https://store.totil.net/en/ar/books"
+                       >
+                       <b>Our Book Store</b>
+                    </a>
+
+                </li>
                 @guest
                 <li class="nav-item dropdown no-arrow no-caret mr-1 ">
                     <a class="btn btn-outline-danger pink-btn p-1" style="word-break: keep-all;white-space: nowrap;" id="navbarDropdownAlerts" href="{{route('login')}}"
@@ -102,12 +109,7 @@
                     </a>
 
                 </li>
-                <li class="nav-item dropdown no-arrow no-caret mr-1 ">
-                    <a class="btn btn-outline-secondary sec-btn p-1" style="word-break: keep-all;white-space: nowrap;" href="{{route('be_our_partner')}}" role="button">
-                        {{__('Be Our Partner')}}
-                    </a>
-
-                </li>
+              
                 @endguest
                 
                 @auth

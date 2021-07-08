@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\BookService;
+use App\BookServiceFile;
 use App\Book;
 use App\Service;
 use Illuminate\Support\Str;
@@ -39,21 +40,24 @@ class BookServiceController extends Controller
      */
     public function store(Book $book,Request $request)
     {
-        // return $request->all();
-        $random = Str::random(40);
-        $file = $request->file('file');     
-       $filename = $file->getClientOriginalName();
-       $add_file = explode('.',$filename);
-       $add_file = $random.'.'.$file->extension(); 
-       $service_file= $file->move(public_path()."/service/files/", $add_file);
        $bookService = new BookService();
        $bookService->book_id = $book->id;
        $bookService->service_id = $request->service_id;
        $bookService->price = $request->price;
-       $bookService->file_path =  "/service/files/".$add_file;
-     
+       $bookService->file_path =  "No File";
        if($bookService->save()){
-        return redirect()->back();
+        foreach ($request->file('file') as $file) {   
+            $random = Str::random(40);
+            $filename = $file->getClientOriginalName();
+            $add_file = explode('.',$filename);
+            $add_file = $random.'.'.$file->extension(); 
+            $service_file= $file->move(public_path()."/service/files/", $add_file);
+            $serviceFile = new BookServiceFile();
+            $serviceFile->book_service_id = $bookService->id;
+            $serviceFile->file_path = "/service/files/".$add_file;
+            $serviceFile->save();
+           }
+        return redirect()->route('provider.books.service.show',$book->id);
     }
     }
 
@@ -99,6 +103,10 @@ class BookServiceController extends Controller
      */
     public function destroy(BookService $bookService)
     {
-        //
+       foreach ($bookService->files as $file) {
+           $file->delete();
+       }
+       $bookService->delete();
+       return redirect()->back();
     }
 }

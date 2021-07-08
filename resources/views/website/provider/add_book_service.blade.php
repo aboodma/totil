@@ -53,7 +53,7 @@
                                
                                <div class="form-group">
                                    <label for="">Services</label>
-                                   <select name="service_id" class="form-control" id="">
+                                   <select required name="service_id" class="form-control" id="">
                                        <option value="">Please Select Service</option>
                                        @foreach($services as $service)
                                        <option value="{{$service->id}}">{{$service->name}}</option>
@@ -61,12 +61,20 @@
                                    </select>
                                </div>
                                <div class="form-group">
-                                   <label for="">Price</label>
+                                   <label required for="">Price</label>
                                    <input type="number" class="form-control" name="price" >
                                </div>
                                <div class="form-group">
                                    <label for="">File</label>
-                                   <input type="file" class="form-control" name="file">
+                                   <div class="input-group">
+                                    <input required type="file" class="form-control" name="file[]">
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn  btn-success" id="add_files"> <i class="fas fa-plus"></i> </button>
+                                    </div>
+                                   </div>
+                               </div>
+                               <div id="extra_fields_div"  >
+                                
                                </div>
                                
                                <div class="form-group">
@@ -85,6 +93,24 @@
 @endsection
 @section('script')
 <script>
-    
+    var field_count = 0;
+    $("#add_files").on("click",function(){
+        var html  = "<div class='form-group' id='field_"+field_count+"'>";
+            html += "<label for=''> File </label>";
+            html += "<div class='input-group'>"
+            html += "<input required type='file' class='form-control' name='file[]' >";
+            html += '<div class="input-group-append">';
+            html += '<button class="btn  btn-danger" type="button" onClick="remove_field(this)" data-id="'+field_count+'" > <i class="fas fa-trash"></i> </button>';
+            html += '</div>';
+            html += '</div>';
+            html += '</div>';
+            html += '</div>';
+        $("#extra_fields_div").append(html);
+        ++field_count; 
+    })
+    function remove_field(e) {
+        var id = "#field_"+e.attributes["data-id"].value;
+        $(id).remove();
+    }
 </script>
 @endsection

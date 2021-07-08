@@ -188,12 +188,12 @@
                                                 <span class="badge badge-danger">{{__('Rejected')}}</span>
                                                 @endif</td>
                                             <td>{{$order->total_price}}</td>
-                                            <td>
+                                            <td nowarp>
                                                <div class="btn-group d-flex justify-content-between">
                                                 <a href="{{route('customer.OrderTracking',Crypt::encrypt($order->id))}}"
                                                     class="btn btn-info"> {{__('Order Tracking')}} <i class="fa fa-eye"></i>
                                                 </a>
-                                                <a download href="{{asset($order->details->provider_message)}}"
+                                                <a  href="{{route('customer.showOrderfiles',$order->id)}}"
                                                     class="btn btn-primary"> {{__('Download File')}} <i class="fa fa-download"></i>
                                                 </a>
                                                 

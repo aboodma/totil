@@ -36,3 +36,12 @@ function slugify($text, string $divider = '-')
   return $text;
 }
 }
+
+if (!function_exists('getUrlMimeType')) {
+  function getUrlMimeType($url)
+  {
+      $buffer = file_get_contents($url);
+      $finfo = new finfo(FILEINFO_MIME_TYPE);
+      return $finfo->buffer($buffer);
+  }
+}

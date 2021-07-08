@@ -46,6 +46,7 @@ Route::post('/book','BookController@showBookServices')->name('book_show');
 Route::group(['prefix'=>'customer','as'=>'customer.','middleware'=>'customer'], function(){
 Route::get('profile','CustomerController@profile')->name('profile');
 Route::post('UpdatePrfoile','CustomerController@UpdatePrfoile')->name('UpdatePrfoile');
+Route::get('order/files/{order}','OrderController@customerOrderDownloadFiles')->name('showOrderfiles');
 Route::get('myOrders','CustomerController@orders')->name('orders');
 Route::get('OrderTracking/{id}','CustomerController@OrderTracking')->name('OrderTracking');
 Route::get('videos','CustomerController@videos')->name('videos');
@@ -147,6 +148,7 @@ Route::group(['prefix'=>'provider','as'=>'provider.','middleware'=>'provider'], 
   Route::get('/books/show/{book}','BookController@show')->name('books.service.show');
   Route::post('/books/update/{book}','BookController@update')->name('books.service.update');
   Route::post('/books/service/store/{book}','BookServiceController@store')->name('books.service.store');
+  Route::delete('/books/service/delete/{bookService}','BookServiceController@destroy')->name('books.service.delete');
   Route::get('/orders/{status}','ProviderController@orders')->name('orders');
   Route::get('/orders/procced/{order}','ProviderController@orders_procced')->name('orders_procced');
   Route::get('/orders/OrderChangeStatus/{status}/{order}','ProviderController@OrderChangeStatus')->name('OrderChangeStatus');
@@ -164,6 +166,7 @@ Route::group(['prefix'=>'provider','as'=>'provider.','middleware'=>'provider'], 
   Route::get('/service/edit/{providerService}','ProviderServiceController@edit')->name('edit_service');
   Route::post('/service/update/{providerService}','ProviderServiceController@update')->name('update_service');
   Route::delete('service/delete/{providerService}','ProviderServiceController@destroy')->name('delete_service');
+  Route::get('book/services/files/{bookService}','BookServiceFileController@index')->name('book_service_files');
 });
 
  

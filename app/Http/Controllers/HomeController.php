@@ -81,6 +81,8 @@ class HomeController extends Controller
         $order->book_id = $request->book_id;
         $order->provider_id = $request->provider_id;
         $order->service_id = $request->service_id;
+        $order->book_service_id = BookService::where(['book_id'=>$request->book_id,'service_id'=>$request->service_id])->first()->id;
+
         $order->total_price = $request->price;
         $order->status = 2;
         $order->is_public = 1;
