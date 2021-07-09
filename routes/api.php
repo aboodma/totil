@@ -21,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login','ApiController@Login');
 Route::post('/signup','ApiController@SignUp');
 Route::post('/categories','ApiController@Categories');
+Route::get('/providers','ApiController@Providers');
+Route::get('/provider/{provider}','ApiController@Provider');
+Route::get('/book/{book}','ApiController@BookServices');
 //Route::post('/countries','ApiController@Countries');
 
 Route::middleware(['auth:api'])->group(function () {
