@@ -109,9 +109,15 @@
                     </a>
 
                 </li>
-              
+                <li class="nav-item dropdown no-arrow no-caret mr-1 ">
+            <a class="btn btn-outline-secondary sec-btn p-1" style="word-break: keep-all;white-space: nowrap;" href="{{route('be_our_partner')}}" role="button">
+                {{__('Be Our Partner')}}
+            </a>
+
+        </li>
+
                 @endguest
-                
+
                 @auth
                 <li class="nav-item dropdown no-arrow no-caret mr-1 ">
                     <a class="btn btn-outline-secondary sec-btn p-1" style="word-break: keep-all;white-space: nowrap;" id="navbarDropdownAlerts"
