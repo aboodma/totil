@@ -21,13 +21,10 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login','ApiController@Login');
 Route::post('/signup','ApiController@SignUp');
 Route::post('/categories','ApiController@Categories');
-Route::post('/countries','ApiController@Countries');
+//Route::post('/countries','ApiController@Countries');
 
 Route::middleware(['auth:api'])->group(function () {
     Route::post('/userByToken','ApiController@GetUserByToken');
-    Route::post('/acceptOrder','ApiController@AcceptOrder');
-    Route::post('/rejectOrder','ApiController@RejectOrder');
-    Route::post('/ProccedOrder','ApiController@ProccedOrder');
     Route::post('/logout','ApiController@Logout');
     Route::post('/user','ApiController@user');
   
