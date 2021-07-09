@@ -112,14 +112,14 @@ class ApiController extends Controller
     }
     public function Providers()
     {
-        $providers = Provider::where('is_approved',true)->get()->loadMissing('user')->loadMissing('providerType');
+        $providers = Provider::where('is_approved',true)->get()->loadMissing('user')->loadMissing('country')->loadMissing('providerType');
         return response()->json($providers, 200);
 
     }
 
     public function Provider(Provider $provider)
     {
-        $provider->loadMissing('user')->loadMissing('providerType')->loadMissing('books');
+        $provider->loadMissing('user')->loadMissing('providerType')->loadMissing('country')->loadMissing('books');
         return response()->json($provider, 200);
     }
 
