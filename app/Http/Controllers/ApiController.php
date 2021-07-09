@@ -11,6 +11,7 @@ use VideoThumbnail;
 use App\Notification;
 use App\Wallet;
 use App\Provider;
+use App\ProviderType;
 use App\Category;
 use App\Country;
 class ApiController extends Controller
