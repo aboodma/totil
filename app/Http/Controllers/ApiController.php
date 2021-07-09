@@ -107,7 +107,7 @@ class ApiController extends Controller
 
     public function Categories()
     {
-        $categories = Category::all();
+        $categories = ProviderType::all();
         return response()->json($categories, 200);
     }
     public function Providers()
