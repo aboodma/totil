@@ -186,7 +186,6 @@ class HomeController extends Controller
          'avatar'=>$avatar,
          'api_token' => Str::random(60),
      ]);
-   }
      if ($user) {
       $provider = new Provider();
          $slug = slugify($request->name);
@@ -210,6 +209,8 @@ class HomeController extends Controller
            return route('request_submited',$user->id);
         }
      }
+   }
+    
      }else{
         return 0;
      }
