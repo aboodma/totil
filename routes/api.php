@@ -24,6 +24,7 @@ Route::get('/categories','ApiController@Categories');
 Route::get('/providers','ApiController@Providers');
 Route::get('/provider/{provider}','ApiController@Provider');
 Route::get('/book/{book}','ApiController@BookServices');
+Route::get('/providerFromCategory','ApiController@providerFromCategory');
 //Route::post('/countries','ApiController@Countries');
 
 Route::middleware(['auth:api'])->group(function () {

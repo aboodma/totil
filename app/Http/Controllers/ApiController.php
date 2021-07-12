@@ -129,5 +129,11 @@ class ApiController extends Controller
         $book->loadMissing('services');
         return response()->json($book, 200);
     }
+
+    public function providerFromCategory()
+    {
+        $providers = Provider::where('is_approved',true)->get()->groupBy('provider_type_id');
+        return response()->json($providers, 200);
+    }
     
 }
