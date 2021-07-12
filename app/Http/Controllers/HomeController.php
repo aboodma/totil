@@ -190,7 +190,6 @@ class HomeController extends Controller
       $provider = new Provider();
          $slug = slugify($request->name);
          $random = Str::random(40);
-         $random = Str::random(40);
          $file = $request->file('video');
          $filename = $file->getClientOriginalName();
          $newName = explode('.',$filename);
