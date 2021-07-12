@@ -304,7 +304,7 @@
                 infinite: true,
                 slidesToShow: 5,
                 slidesToScroll: 3,
-                dir: "ltr",
+                dir: "rtl",
                 centerMode: false,
                 // centerPadding: '60px',
                 // adaptiveHeight: true,
