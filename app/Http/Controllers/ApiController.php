@@ -134,10 +134,10 @@ class ApiController extends Controller
     public function providerFromCategory()
     {
         $categories = ProviderType::all()->loadMissing(['provider'=> function($q){
-            $q->where('is_approved',1)->first();
+            $q->where('is_approved',true)->first();
             
            
-        }]);
+        },'provider.user']);
         return response()->json($categories, 200);
     }
     
