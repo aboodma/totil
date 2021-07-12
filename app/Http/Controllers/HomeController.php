@@ -199,6 +199,7 @@ class HomeController extends Controller
          $provider->video_thumpnail = 'uploads/thumbs/'.$random.".jpg";
          $provider->video = $newName;
         $provider->user_id = $user->id;
+        $provider->is_featured =false;
          $provider->slug = $slug;
         $provider->about_me = $request->about_me;
         $provider->provider_type_id = $request->provider_type_id;
