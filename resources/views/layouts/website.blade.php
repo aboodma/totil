@@ -25,8 +25,9 @@
     <link href="{{asset('vendor/select2/css/select2.min.css')}}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    {{-- <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css" integrity="sha384-JvExCACAZcHNJEc7156QaHXTnQL3hQBixvj5RV5buE7vgnNEzzskDtx9NQ4p6BJe" crossorigin="anonymous"> --}}
-
+    @if(App()->getLocale() === "ar")
+    <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css" integrity="sha384-JvExCACAZcHNJEc7156QaHXTnQL3hQBixvj5RV5buE7vgnNEzzskDtx9NQ4p6BJe" crossorigin="anonymous">
+    @endif
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
 
 
@@ -46,21 +47,22 @@
     <nav class="navbar navbar-expand-lg navbar-light topbar  shadow-sm bg-white osahan-nav-top px-1  ">
         <div class="container">
 
-            <a class="navbar-brand d-none d-lg-block" href="{{route('welcome')}}"><img src="{{asset('images/logo.png')}}" alt=""></a>
+            <a class="navbar-brand d-none d-lg-block" href="{{route('welcome')}}">
+                <img src="{{asset('images/logo.png')}}" style="height: 30px;" alt=""></a>
             <a class="navbar-brand d-lg-none  m-auto  pb-3" href="{{route('welcome')}}">
                 <img style="height: 30px;" src="{{asset('images/logo.png')}}" alt=""></a>
 
             <form action="{{route('search')}}" method="GET" class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
-                    <input type="text" style="border-top-left-radius:20px;border-bottom-left-radius:20px;padding:20px"
+                    <input type="text" style="/*! border-top-left-radius:20px; *//*! border-bottom-left-radius:20px; */padding:21px;border-radius: 20px;padding-right: 6.5rem;"
                         class="form-control bg-white small"name="q" placeholder="{{__('Find Services...')}}" aria-label="Search"
                         aria-describedby="basic-addon2">
-                    <div class="input-group-append">
+                   
                         <button class="btn btn-dark"
-                            style="border-top-right-radius:20px;border-bottom-right-radius:20px;" type="submit">
+                        style="/*! border-top-right-radius:20px; *//*! border-bottom-right-radius:20px; */position: absolute;right: 0px;/*! top: 0px; *//*! bottom: 0px; */border-radius: 20px;margin: 5px;background-color: #04808b;border-color: #04808b;" type="submit">
                             <i class="fa fa-search fa-sm"></i>
                         </button>
-                    </div>
+                 
                 </div>
             </form>
 
@@ -87,13 +89,6 @@
                         </form>
                     </div>
                 </li>
-                <li class="nav-item dropdown no-arrow no-caret mr-3 ">
-                    <a class="" style="word-break: keep-all;white-space: nowrap;" id="navbarDropdownAlerts" href="https://store.totil.net/en/ar/books"
-                       >
-                       <b>Our Book Store</b>
-                    </a>
-
-                </li>
                 @guest
                 <li class="nav-item dropdown no-arrow no-caret mr-1 ">
                     <a class="btn btn-outline-danger pink-btn p-1" style="word-break: keep-all;white-space: nowrap;" id="navbarDropdownAlerts" href="{{route('login')}}"
@@ -110,14 +105,13 @@
 
                 </li>
                 <li class="nav-item dropdown no-arrow no-caret mr-1 ">
-            <a class="btn btn-outline-secondary sec-btn p-1" style="word-break: keep-all;white-space: nowrap;" href="{{route('be_our_partner')}}" role="button">
-                {{__('Be Our Partner')}}
-            </a>
+                    <a class="btn btn-outline-secondary sec-btn p-1" style="word-break: keep-all;white-space: nowrap;" href="{{route('be_our_partner')}}" role="button">
+                        {{__('Be Our Partner')}}
+                    </a>
 
-        </li>
-
+                </li>
                 @endguest
-
+                
                 @auth
                 <li class="nav-item dropdown no-arrow no-caret mr-1 ">
                     <a class="btn btn-outline-secondary sec-btn p-1" style="word-break: keep-all;white-space: nowrap;" id="navbarDropdownAlerts"
@@ -138,7 +132,7 @@
                             <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
                         </svg>
                         @if( auth()->user()->notifications->where('is_read',0)->count() != 0)
-                        <i style="font-size: smaller;color:#04808B  !important" class="fa fa-circle text-success"></i>
+                        <i style="font-size: smaller;color:#04808b !important" class="fa fa-circle text-success"></i>
                         @endif
                     </a>
                     <div class="dropdown-menu dropdown-menu-right border-0 shadow  "
@@ -204,7 +198,7 @@
                     <a class="btn btn-icon btn-transparent-dark dropdown-toggle  " style="background: #f1f2f500" id="navbarDropdownMessages"
                         href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
-                        <i class="fas fa-globe-europe " style="font-size: 1.2rem;color: #04808B ;"></i>
+                        <i class="fas fa-globe-europe " style="font-size: 1.2rem;color: #04808b;"></i>
                     </a>
                     <div style="min-width: 9.75rem;" class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up"
                         aria-labelledby="navbarDropdownMessages">
@@ -365,7 +359,7 @@
                     $("#heart_" + id).effect("puff", function () {
                         setTimeout(function () {
                             $("#heart_" + id).removeAttr("style").hide().fadeIn();
-                            $("#heart_" + id).css('color', "#d47fa6");
+                            $("#heart_" + id).css('color', "#04808b");
 
                         }, 100);
                         return false;
