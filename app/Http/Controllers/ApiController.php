@@ -14,6 +14,7 @@ use App\Provider;
 use App\ProviderType;
 use App\Category;
 use App\Country;
+use Illuminate\Database\Query\Builder as QueryBuilder;
 class ApiController extends Controller
 {
     public function Login(Request $request)
@@ -132,8 +133,12 @@ class ApiController extends Controller
 
     public function providerFromCategory()
     {
-        $providers = Provider::where('is_approved',true)->get()->groupBy('provider_type_id');
-        return response()->json($providers, 200);
+        $categories = ProviderType::all()->loadMissing(['provider'=> function($q){
+            $q->where('is_approved',1)->first();
+            
+           
+        }]);
+        return response()->json($categories, 200);
     }
     
 }
