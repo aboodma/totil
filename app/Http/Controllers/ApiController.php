@@ -127,7 +127,7 @@ class ApiController extends Controller
 
     public function BookServices(Book $book)
     {
-        $book->loadMissing('services');
+        $book->loadMissing('services')->loadMissing('services.service');
         return response()->json($book, 200);
     }
 
