@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html     @if(App()->getLocale() === "ar") dir="rtl" @endif>
+<html     @if(App()->getLocale() === "ar") dir="rtl" lang="ar" @endif>
 
 
 
