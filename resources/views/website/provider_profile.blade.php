@@ -4,10 +4,7 @@
 <link rel="stylesheet" href="{{asset('css/audio_player.css')}}">
 <style>
    .slick-slider .slick-track, .slick-slider .slick-list { direction: ltr; }
-    [dir='rtl'] .slick-slide
-{
-    float: right;
-}
+ 
 </style>
 
 <script src="https://unpkg.com/wavesurfer.js"></script>
