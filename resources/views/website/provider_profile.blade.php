@@ -111,7 +111,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="row books-slider " dir="rtl" data-toggle="inputs">
+                        <div class="row books-slider "  data-toggle="inputs">
                             @foreach ($provider->books as $book)
                             <div class="col">
                                 <label>
