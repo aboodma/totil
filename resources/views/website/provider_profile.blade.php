@@ -338,7 +338,7 @@
                 infinite: true,
                 slidesToShow: 3,
                 slidesToScroll: 2,
-             
+                dir:"rtl",
                 centerMode: false,
                 // centerPadding: '60px',
                 // adaptiveHeight: true,
