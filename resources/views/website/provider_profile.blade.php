@@ -337,7 +337,7 @@
                 infinite: true,
                 slidesToShow: 3,
                 slidesToScroll: 2,
-                dir:"rtl",
+             
                 centerMode: false,
                 // centerPadding: '60px',
                 // adaptiveHeight: true,
@@ -349,7 +349,7 @@
                         slidesToScroll: 3,
                         infinite: true,
 
-                        dir:"rtl",
+                     
                         dots: true
                     }
                     },
