@@ -349,6 +349,8 @@
                         slidesToShow: 3,
                         slidesToScroll: 3,
                         infinite: true,
+
+                        dir:"rtl",
                         dots: true
                     }
                     },
