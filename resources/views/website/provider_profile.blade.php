@@ -4,11 +4,11 @@
 <link rel="stylesheet" href="{{asset('css/audio_player.css')}}">
 <style>
     .slick-slider .slick-track, .slick-slider .slick-list {
-direction: ltr;
+direction: rtl;
 }
     [dir='rtl'] .slick-slide
 {
-    float: left;
+    float: right;
 }
 </style>
 
