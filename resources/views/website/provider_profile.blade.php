@@ -3,9 +3,7 @@
 @section('style')
 <link rel="stylesheet" href="{{asset('css/audio_player.css')}}">
 <style>
-    .slick-slider .slick-track, .slick-slider .slick-list {
-direction: rtl;
-}
+   .slick-slider .slick-track, .slick-slider .slick-list { direction: ltr; }
     [dir='rtl'] .slick-slide
 {
     float: right;
