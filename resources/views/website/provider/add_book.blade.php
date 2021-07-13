@@ -69,11 +69,11 @@
                                </div>
                                <div class="form-group">
                                 <label for="">Audio Simple</label>
-                                <input type="file" name="audio_simple" id="" class="form-control">
+                                <input type="file" name="audio_simple" accept="audio/mp3" id="" class="form-control">
                                </div>
                                <div class="form-group">
                                 <label for="">Video Simple</label>
-                                <input type="file" name="video_simple" id="" class="form-control">
+                                <input type="file" name="video_simple" accept="video/mp4" id="" class="form-control">
                                </div>
                                <div class="form-group">
                                    <button class="form-control btn btn-success" type="submit">Create</button>
