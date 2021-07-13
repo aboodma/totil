@@ -3,13 +3,7 @@
 @section('style')
 <link rel="stylesheet" href="{{asset('css/audio_player.css')}}">
 <style>
-[dir='rtl'] .slick-slide
-{
-    float: left;
-}
-.slick-slider .slick-track, .slick-slider .slick-list {
-direction: ltr;
-}
+
 </style>
 
 <script src="https://unpkg.com/wavesurfer.js"></script>

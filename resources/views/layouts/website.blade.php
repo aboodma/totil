@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html     @if(App()->getLocale() === "ar") dir="rtl" lang="ar" @endif>
+<html>
 
 
 
@@ -25,9 +25,7 @@
     <link href="{{asset('vendor/select2/css/select2.min.css')}}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    @if(App()->getLocale() === "ar")
-    <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css" integrity="sha384-JvExCACAZcHNJEc7156QaHXTnQL3hQBixvj5RV5buE7vgnNEzzskDtx9NQ4p6BJe" crossorigin="anonymous">
-    @endif
+
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
 
 
