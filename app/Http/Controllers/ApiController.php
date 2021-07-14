@@ -12,9 +12,7 @@ use App\Notification;
 use App\Wallet;
 use App\Provider;
 use App\ProviderType;
-use App\Category;
-use App\Country;
-use Illuminate\Database\Query\Builder as QueryBuilder;
+
 class ApiController extends Controller
 {
     public function Login(Request $request)
@@ -93,6 +91,10 @@ class ApiController extends Controller
     ]);
   }
     if ($user) {
+        $userdata = array(
+            'email'=>$request->email,
+            'password'=>$request->password,
+        );
         $att = Auth::attempt($userdata);
         if ($att) {
                     $token = Str::random(60);
@@ -139,6 +141,10 @@ class ApiController extends Controller
            
         },'provider.user']);
         return response()->json($categories, 200);
+    }
+    public function createOrder(Request $request)
+    {
+        return $request;
     }
     
 }
