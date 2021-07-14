@@ -26,7 +26,6 @@ class ApiController extends Controller
                 'email'=>$request->email,
                 'password'=>$request->password,
             );
-            try {
                $att = Auth::attempt($userdata);
                 if ($att) {
                     $token = Str::random(60);
@@ -35,11 +34,11 @@ class ApiController extends Controller
                         'api_token' => hash('sha256', $token),
                         'mobile_token' => $request->token,
                     ])->save();
-                     return response()->json($request->user, 200);
+                     return response()->json(auth()->user(), 200);
+                }else{
+                    return response()->json(auth()->user(), 502);
                 }
-            } catch (\Throwable $th) {
-                throw $th;
-            }
+            
         }
     }
 
