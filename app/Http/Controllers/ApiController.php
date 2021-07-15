@@ -48,7 +48,8 @@ class ApiController extends Controller
 
     public function GetUserByToken()
     {
-     return response()->json(auth()->user(), 200);
+        
+     return response()->json(auth()->user()->loadMissing('wallet'), 200);
     }
 
     public function user(Request $request)
