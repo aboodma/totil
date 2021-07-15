@@ -50,7 +50,8 @@ class ApiController extends Controller
     {
         $data = array(
             "user"=>auth()->user(),
-            "wallet"=>auth()->user()->wallet
+            "wallet"=>auth()->user()->wallets,
+            "other"=>auth()->user->loadMissing('wallets')
         );
      return response()->json($data, 200);
     }
