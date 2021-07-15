@@ -77,7 +77,6 @@ class ApiController extends Controller
         'avatar'=>"no image",
         'api_token' => Str::random(60),
     ]);
-  }
     if ($user) {
         $userdata = array(
             'email'=>$request->email,
@@ -91,10 +90,17 @@ class ApiController extends Controller
                         'mobile_token' => $request->token,
                     ])->save();
                     return response()->json($user, 200);
+                        }else{
+                            return response()->json( 502);
                         }
             } else {
-            return 0;
+                return response()->json( 502);
             }
+
+  }else{
+    return response()->json( 502);
+  }
+   
     }
 
     public function Categories()
