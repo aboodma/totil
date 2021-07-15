@@ -49,10 +49,9 @@ class ApiController extends Controller
     public function GetUserByToken()
     {
         $data = array(
-            "user"=>auth()->user(),
+            "user"=>auth()->user->with('wallets'),
+
           
-            
-            
         );
      return response()->json($data, 200);
     }
