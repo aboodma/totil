@@ -16,7 +16,7 @@ use App\Notification;
 use App\Wallet;
 use App\Provider;
 use App\ProviderType;
-
+use Illuminate\Support\Facades\Hash;
 class ApiController extends Controller
 {
     public function Login(Request $request)
@@ -94,7 +94,7 @@ class ApiController extends Controller
                         'api_token' => hash('sha256', $token),
                         'mobile_token' => $request->token,
                     ])->save();
-                    return response()->json($user, 200);
+                    return response()->json(auth()->user(), 200);
                         }else{
                             return response()->json( 502);
                         }
