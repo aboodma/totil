@@ -184,9 +184,9 @@ class ApiController extends Controller
 
         }
 
-        $order_id =  Crypt::encrypt($order->id);
+       
         
-        return redirect()->route('order_complete',$order_id);
+        return response()->json(200);
      }
     
 }
