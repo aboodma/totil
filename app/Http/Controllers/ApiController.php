@@ -7,6 +7,10 @@ use Auth;
 use Str;
 use App\User;
 use App\Book;
+use App\Order;
+use App\BookService;
+use App\OrderDetail;
+use Crypt;
 use VideoThumbnail;
 use App\Notification;
 use App\Wallet;
@@ -72,6 +76,7 @@ class ApiController extends Controller
      $user =  User::create([
         'name' => $request->name,
         'email' =>$request->email,
+        'phone' =>$request->phone,
         'password' => Hash::make($request->password),
         'user_type'=>0,
         'avatar'=>"no image",
@@ -136,9 +141,51 @@ class ApiController extends Controller
         },'provider.user']);
         return response()->json($categories, 200);
     }
-    public function createOrder(Request $request)
-    {
-        return $request;
-    }
+    public function pay(Request $request)
+     {
+
+        $order = New Order;
+        $order->user_id = auth()->user()->id;
+        $order->book_id = $request->book_id;
+        $order->provider_id = $request->provider_id;
+        $order->service_id = $request->service_id;
+        $order->book_service_id = BookService::where(['book_id'=>$request->book_id,'service_id'=>$request->service_id])->first()->id;
+
+        $order->total_price = $request->price;
+        $order->status = 2;
+        $order->is_public = 1;
+         if ($request->payment_method == "wallet") {
+            $wallet = new Wallet();
+            $wallet->user_id = auth()->user()->id;
+            $wallet->transaction_type = 1 ;
+            $wallet->amount = $order->total_price;
+            $wallet->save();
+         }
+        if ($order->save()) {
+            $order_details = new OrderDetail();
+            $order_details->order_id = $order->id;
+            $order_details->from = $request->from;
+            $order_details->to  = $request->to;
+            $order_details->customer_message = $request->customer_message;
+            $order_details->provider_message = BookService::where(['book_id'=>$request->book_id,'service_id'=>$request->service_id])->first()->file_path;
+            $order_details->save();
+            $Customernotify = new Notification;
+            $Customernotify->user_id = auth()->user()->id;
+            $Customernotify->msg = "New Order Placed";
+            $Customernotify->type = 0;
+            $Customernotify->save();
+
+            $Providernotify = new Notification;
+            $Providernotify->user_id = Provider::find($request->provider_id)->user_id;
+            $Providernotify->msg = "New Order Placed";
+            $Providernotify->type = 0;
+            $Providernotify->save();
+
+        }
+
+        $order_id =  Crypt::encrypt($order->id);
+        
+        return redirect()->route('order_complete',$order_id);
+     }
     
 }
