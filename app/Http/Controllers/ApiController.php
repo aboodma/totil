@@ -165,9 +165,9 @@ class ApiController extends Controller
         if ($order->save()) {
             $order_details = new OrderDetail();
             $order_details->order_id = $order->id;
-            $order_details->from = $request->from;
-            $order_details->to  = $request->to;
-            $order_details->customer_message = $request->customer_message;
+            $order_details->from = "no";
+            $order_details->to  = "no";
+            $order_details->customer_message = "no";
             $order_details->provider_message = BookService::where(['book_id'=>$request->book_id,'service_id'=>$request->service_id])->first()->file_path;
             $order_details->save();
             $Customernotify = new Notification;
