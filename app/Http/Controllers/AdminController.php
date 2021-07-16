@@ -183,7 +183,7 @@ class AdminController extends Controller
     {
       $user->provider->is_approved = false;
       $user->provider->save();
-      return $user->provider;
+      return redirect()->back();
     }
 
     public function provider_approve(Provider $provider)
