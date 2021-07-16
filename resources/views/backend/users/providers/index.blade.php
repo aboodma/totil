@@ -79,7 +79,7 @@
                         <!--begin::User-->
                         <!--begin::Actions-->
                         <div class="my-lg-0 my-1">
-                            <form action="{{route('admin.users.providers_destroy',$user->id)}}">
+                            <form action="{{route('admin.users.providers_destroy',$user->id)}}" method="POST">
                                 @csrf
                                 @method("DELETE")
                                 <input type="hidden" name="provider_id" value="{{$user->provider->id}}">
