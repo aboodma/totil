@@ -179,9 +179,9 @@ class AdminController extends Controller
     /**
      * Delete Single Provider 
      */
-    public function providers_destroy(Requset $request , User $user)
+    public function providers_destroy(Request $request , User $user)
     {
-      # code...
+      return $request->all();
     }
 
     public function provider_approve(Provider $provider)

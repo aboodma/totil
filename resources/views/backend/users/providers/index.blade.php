@@ -79,13 +79,19 @@
                         <!--begin::User-->
                         <!--begin::Actions-->
                         <div class="my-lg-0 my-1">
-                            @if(!$user->provider->is_approved)
-                            <a href="{{route('admin.users.providers_approve',$user->provider->id)}}" class="btn btn-sm btn-success font-weight-bolder text-uppercase ">Approve</a>
-                            @endif
-                            <a href="{{route('admin.users.providers_show',$user->id)}}" class="btn btn-sm btn-primary font-weight-bolder text-uppercase ">Show Profile</a>
-                            <a href="{{route('admin.users.providers_edit',$user->id)}}" class="btn btn-sm btn-warning font-weight-bolder text-uppercase">Edit</a>
-                            <a href="{{route('admin.users.providers_edit',$user->id)}}" class="btn btn-sm btn-danger font-weight-bolder text-uppercase">Delete</a>
-                            
+                            <form action="{{route('admin.users.providers_destroy',$user->id)}}">
+                                @csrf
+                                @method("DELETE")
+                                <input type="hidden" name="provider_id" value="{{$user->provider->id}}">
+                                @if(!$user->provider->is_approved)
+                                <a href="{{route('admin.users.providers_approve',$user->provider->id)}}" class="btn btn-sm btn-success font-weight-bolder text-uppercase ">Approve</a>
+                                @endif
+                                <a href="{{route('admin.users.providers_show',$user->id)}}" class="btn btn-sm btn-primary font-weight-bolder text-uppercase ">Show Profile</a>
+                                <a href="{{route('admin.users.providers_edit',$user->id)}}" class="btn btn-sm btn-warning font-weight-bolder text-uppercase">Edit</a>
+                                <button  class="btn btn-sm btn-danger font-weight-bolder text-uppercase" type="submit">Delete</button>
+                                
+                            </form>
+                          
                         </div>
                         <!--end::Actions-->
                     </div>
