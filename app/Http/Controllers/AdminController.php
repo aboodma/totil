@@ -181,7 +181,9 @@ class AdminController extends Controller
      */
     public function providers_destroy(Request $request , User $user)
     {
-      return $request->all();
+      $user->provider->is_approved = false;
+      $user->provider->save();
+      return $user->provider;
     }
 
     public function provider_approve(Provider $provider)
