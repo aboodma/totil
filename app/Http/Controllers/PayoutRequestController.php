@@ -38,7 +38,6 @@ class PayoutRequestController extends Controller
      */
     public function provider_payouts_request(Request $request)
     {
-    //    return $request->all();
         $payout = new PayoutRequest();
         $payout->user_id = auth()->user()->id;
         $payout->amount = $request->amount;
@@ -46,6 +45,8 @@ class PayoutRequestController extends Controller
         $payout->admin_msg = "";
         $payout->details = "IBAN : ". $request->iban . " Account Owner Name : " .$request->account_name;
         if ($payout->save()) {
+            return redirect()->route('provider.payouts');
+        } else {
             return redirect()->route('provider.payouts');
         }
     }
@@ -98,7 +99,7 @@ class PayoutRequestController extends Controller
       }
       return redirect()->back();
     }
-    
+
 
     /**
      * Update the specified resource in storage.

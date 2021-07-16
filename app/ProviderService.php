@@ -3,13 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ProviderService extends Model
 {
     /**
      * Get the service that owns the ProviderService
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function service()
     {
@@ -19,7 +20,7 @@ class ProviderService extends Model
     /**
      * Get the provider that owns the ProviderService
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function provider()
     {

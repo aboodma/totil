@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Provider extends Model
 {
@@ -14,7 +16,7 @@ class Provider extends Model
     /**
      * Get the ProviderType that owns the Provider
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function ProviderType()
     {
@@ -24,7 +26,7 @@ class Provider extends Model
     /**
      * Get the Country that owns the Provider
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function Country()
     {
@@ -34,17 +36,18 @@ class Provider extends Model
     /**
      * Get all of the services for the Provider
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function services()
     {
         return $this->hasMany(ProviderService::class);
     }
+
     public function books()
     {
         return $this->hasMany(Book::class);
     }
-    
+
     public function orders()
     {
         return $this->hasMany(Order::class);

@@ -40,6 +40,8 @@ class HomePageProviderTypeController extends Controller
         $homePageProviderType->limit = 5;
         if ($homePageProviderType->save()) {
             return redirect()->route('admin.homePage.categories');
+        } else {
+            return redirect()->route('admin.homePage.categories');
         }
 
     }
@@ -87,6 +89,8 @@ class HomePageProviderTypeController extends Controller
     public function destroy(HomePageProviderType $homePageProviderType)
     {
         if ($homePageProviderType->delete()) {
+            return redirect()->route('admin.homePage.categories');
+        } else {
             return redirect()->route('admin.homePage.categories');
         }
     }

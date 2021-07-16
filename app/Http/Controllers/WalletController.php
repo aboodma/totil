@@ -4,24 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Wallet;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class WalletController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function provider_wallet()
     {
-        $wallets =  auth()->user()->wallets;
-        return view('website.provider.wallet',compact('wallets'));
+        $wallets = auth()->user()->wallets;
+        return view('website.provider.wallet', compact('wallets'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -31,8 +32,8 @@ class WalletController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -42,8 +43,8 @@ class WalletController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Wallet  $wallet
-     * @return \Illuminate\Http\Response
+     * @param Wallet $wallet
+     * @return Response
      */
     public function show(Wallet $wallet)
     {
@@ -53,8 +54,8 @@ class WalletController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Wallet  $wallet
-     * @return \Illuminate\Http\Response
+     * @param Wallet $wallet
+     * @return Response
      */
     public function edit(Wallet $wallet)
     {
@@ -64,9 +65,9 @@ class WalletController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Wallet  $wallet
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Wallet $wallet
+     * @return Response
      */
     public function update(Request $request, Wallet $wallet)
     {
@@ -76,8 +77,8 @@ class WalletController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Wallet  $wallet
-     * @return \Illuminate\Http\Response
+     * @param Wallet $wallet
+     * @return Response
      */
     public function destroy(Wallet $wallet)
     {

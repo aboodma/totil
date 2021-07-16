@@ -8,14 +8,16 @@ class Book extends Model
 {
     public function provider()
     {
-       return $this->belongsTo(Provider::class);
+        return $this->belongsTo(Provider::class);
     }
+
     public function services()
     {
-       return $this->hasMany(BookService::class);
+        return $this->hasMany(BookService::class);
     }
+
     public function orders()
     {
-       return $this->hasMany(Book::class);
+        return $this->hasMany(Book::class);
     }
 }

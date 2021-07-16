@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','user_type','avatar'
+        'name', 'email', 'password', 'user_type', 'avatar'
     ];
 
     /**
@@ -36,35 +37,39 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-  
-   /**
-    * Get all of the provider for the User
-    *
-    * @return \Illuminate\Database\Eloquent\Relations\HasMany
-    */
-   public function provider()
-   {
-       return $this->hasOne(Provider::class);
-   }
-   public function orders()
-   {
-       return $this->hasMany(Order::class);
-   }
-   public function notifications()
-   {
-       return $this->hasMany(Notification::class);
-   }
 
-   public function wallets()
-   {
-       return $this->hasMany(Wallet::class);
-   }
-   public function payouts()
-   {
-       return $this->hasMany(PayoutRequest::class);
-   }
-   public function favorits()
-   {
-       return $this->hasMany(Favorit::class);
-   }
+    /**
+     * Get all of the provider for the User
+     *
+     * @return HasMany
+     */
+    public function provider()
+    {
+        return $this->hasOne(Provider::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
+
+    public function wallets()
+    {
+        return $this->hasMany(Wallet::class);
+    }
+
+    public function payouts()
+    {
+        return $this->hasMany(PayoutRequest::class);
+    }
+
+    public function favorits()
+    {
+        return $this->hasMany(Favorit::class);
+    }
 }
