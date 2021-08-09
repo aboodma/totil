@@ -120,7 +120,7 @@
                 </div>
                 <div class="from-group row mb-0" >
                     <div class=" col-md-6 offset-md-4" >
-                        <p>By signing up you agree to narabana <a href=""> terms of service  and Privacy Policy</a></p>
+                        <p>By signing up you agree to totil <a href=""> terms of service  and Privacy Policy</a></p>
                         <p>Have an account? <a href="{{route('login')}}">Login</a></p>
                     </div>
                 </div>

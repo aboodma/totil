@@ -44,7 +44,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <legend>Login To Narabana</legend>
+            <legend>Login To Totil</legend>
             <form method="POST" action="{{ route('login') }}">
                 @csrf
 
@@ -94,8 +94,8 @@
                             {{ __('Login') }}
                         </button>
 
-                        
-                        
+
+
                     </div>
                 </div>
                 <div class="from-group row mb-0" >
