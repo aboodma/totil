@@ -6,12 +6,12 @@
                     aria-controls="collapseExample" style="font-weight: 600
          " class=" text-white">
                     <p class="float-left m-0" style="font-size: larger"><b> <i class="fa fa-bars"></i> {{__('Menu')}}</b> </p>
-                    
+
                 </a>
 
             </div>
         </div>
-        <div id="collapseExample" class="bg-white rounded shadow-sm sidebar-fix collapse  pb-2" >
+        <div id="collapseExample" class="bg-white rounded shadow-sm sidebar-fix   pb-2" >
 
             <div class="dropdown-menu-show">
                 <a class="dropdown-item py-2 @if (Route::is('provider.dashboard')) active   @endif"
@@ -52,6 +52,9 @@
                 <a class="dropdown-item py-2" href="{{route('provider.wallet')}}">
                     {{__('My Wallet')}}
                 </a>
+                <a class="dropdown-item py-2" href="{{route('provider.reservations')}}">
+                    {{__('My Reservations')}}
+                </a>
                 <a class="dropdown-item py-2" href="{{route('provider.payouts')}}">
                     {{__('Payout Requests')}}
                 </a>
@@ -71,7 +74,7 @@
         <div class="profile_info">
             <div class="seller-card">
                 <div>
-                   
+
                 </div>
                 <div><a href="#" class="ambassadors-badge">{{auth()->user()->provider->providerType->name}}</a></div>
                 <div class="user-profile-info">
@@ -104,7 +107,7 @@
                         <li class="location">  {{__('From')}}<strong> {{ucfirst(strtolower(auth()->user()->provider->country->name))}}</strong></li>
                         <li class="member-since">{{__('Member since')}}<strong>{{\Carbon\Carbon::createFromTimeStamp(strtotime(auth()->user()->created_at))->diffForHumans()}}</strong></li>
                         <li class="response-time">{{__('Avg. Response Time')}}<strong>2 h</strong></li>
-                        
+
                     </ul>
                 </div>
             </div>

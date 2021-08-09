@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\Order;
 use App\Wallet;
+use Carbon\Carbon;
 use Crypt;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -70,5 +71,18 @@ class CustomerController extends Controller
             return redirect()->route('customer.wallet');
         }
 
+    }
+
+    public function premium_form()
+    {
+        return view('website.customer.premium');
+    }
+    public function premium_activate(Request $request)
+    {
+        $user = auth()->user();
+        $user->is_premium = true;
+        $user->premium_start_date = Carbon::now()->toDateTimeString();
+        $user->save();
+        return redirect()->route('customer_dashboard');
     }
 }

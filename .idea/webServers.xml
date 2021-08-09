@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="68f5dafc-1228-431e-bcdd-f99890197fe2" name="totil" url="https://totil.net">
+        <fileTransfer rootFolder="/www/wwwroot/totil.net" accessType="SFTP" host="207.154.238.194" port="22" sshConfigId="874ec90e-9516-4236-8037-888549dc95a9" sshConfig="root@207.154.238.194:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

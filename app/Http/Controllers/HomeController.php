@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ProviderPost;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use App\Provider;
@@ -244,6 +245,10 @@ class HomeController extends Controller
         $categories = ProviderType::where('name', 'like', '%' . $request->q . '%')->get();
         $providers = User::where('user_type', 1)->where('name', 'like', '%' . $request->q . '%')->get();
         return view('website.search', compact('categories', 'providers'));
+    }
+    public function timeline(){
+        $posts = ProviderPost::orderBy('created_at','DESC')->get();
+        return view('website.timeline', compact('posts'));
     }
 
 }

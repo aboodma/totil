@@ -7,7 +7,7 @@
                   aria-controls="collapseExample" style="font-weight: 600
        " class=" text-white">
                   <p class="float-left m-0" style="font-size: larger"><b> <i class="fa fa-bars"></i> Menu</b> </p>
-                  
+
               </a>
 
           </div>
@@ -31,12 +31,24 @@
                   href="{{route('customer.wallet')}} ">
                   <i class="fas fa-book mr-2"></i>  {{__('My Wallet')}}
               </a>
-              
+              @if(auth()->user()->is_premium)
+              <a class="dropdown-item py-2 @if (Route::is('customer.reservations')) active   @endif"
+                 href="{{route('customer.reservations')}} ">
+                  <i class="fas fa-book mr-2"></i>  {{__('My Reservations')}}
+              </a>
+              @endif
+
               <a class="dropdown-item py-2 @if (Route::is('customer.myFavoritList')) active   @endif"
                   href="{{route('customer.myFavoritList')}} ">
                   <i class="fas fa-star mr-2"></i>  {{__('My Favorit Celebrates')}}
               </a>
-              
+              @if(!auth()->user()->is_premium)
+              <a class="dropdown-item py-2 @if (Route::is('customer.premium_form')) active   @endif"
+                 href="{{route('customer.premium_form')}} ">
+                  <i class="fas fa-star mr-2"></i>  {{__('Activate Premium')}}
+              </a>
+              @endif
+
           </div>
       </div>
   </div>

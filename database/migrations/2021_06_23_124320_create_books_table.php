@@ -22,8 +22,8 @@ class CreateBooksTable extends Migration
             $table->text('publisher');
             $table->text('cover_path');
             $table->text('pages_count');
-            $table->text('audio_simple');
-            $table->text('video_simple');
+            $table->text('audio_simple')->nullable();
+            $table->text('video_simple')->nullable();
 
             $table->timestamps();
         });
