@@ -4,7 +4,38 @@
 @endsection
 @section('content')
 
+    <div class="freelance-projects bg-white py-3">
+        <div class="container">
+            <div class="row">
+                @foreach(\App\LiveBook::all() as $book)
+                <div class=" col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
+                    <div class="freelancer">
+                        <div>
+                            <div class="top-right p-1 text-center">
 
+
+                            </div>
+
+                            <a href="{{route('liveBook_read',$book->id)}}">
+                                <img src="{{asset($book->cover)}}">
+                            </a>
+                        </div>
+                        <a href="">
+                            <div class="freelancer-footer">
+
+                                <h5 style="padding: 0px;">{{$book->name}}
+{{--                                    <span style="font-size: 12px">{{ucfirst(strtolower(_ti($provider->ProviderType->name)))}}--}}
+{{--                                    <br>--}}
+{{--                                    {{ucfirst(strtolower(_ti($provider->Country->name)))}}</span>--}}
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
     <div class="services-wrapper bg-white py-5">
         <div class="container">
             <div class="row main-slider">

@@ -60,4 +60,7 @@ class Provider extends Model
     {
         return $this->hasMany(ProviderPost::class);
     }
+    public function liveBooks(){
+        return $this->hasMany(LiveBook::class);
+    }
 }

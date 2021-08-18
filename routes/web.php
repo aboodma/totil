@@ -38,6 +38,7 @@ Auth::routes();
     Route::get('/service_check', 'ProviderServiceController@service_check')->name('service_check');
     Route::post('/book', 'BookController@showBookServices')->name('book_show');
     Route::post('reservation/store',"ReservationController@store")->name('reservation_store')->middleware('auth');
+    Route::get('liveBook/{liveBook}','LiveBookController@read')->name('liveBook_read');
 
 //customer routes
 Route::group(['prefix' => 'customer', 'as' => 'customer.', 'middleware' => 'customer'], function () {
@@ -168,6 +169,15 @@ Route::group(['prefix' => 'provider', 'as' => 'provider.', 'middleware' => 'prov
     Route::delete('service/delete/{providerService}', 'ProviderServiceController@destroy')->name('delete_service');
     Route::get('book/services/files/{bookService}', 'BookServiceFileController@index')->name('book_service_files');
     Route::post('post/create','ProviderPostController@store')->name('create_post');
+    Route::get('live_book_create','LiveBookController@create')->name('create_live_book');
+    Route::post('live_book_store','LiveBookController@store')->name('store_live_book');
+    Route::get('live_books','LiveBookController@index')->name('index_live_books');
+    Route::get('live_books/{liveBook}','LiveBookController@show')->name('show_live_book');
+    Route::get('live_books_edit/{liveBook}','LiveBookController@edit')->name('edit_live_book');
+    Route::get('create_live_book_page/{liveBook}','LiveBookPageController@create')->name('create_live_book_page');
+    Route::post('store_live_book_page/{liveBook}','LiveBookPageController@store')->name('store_live_book_page');
+    Route::get('view_live_book_page/{liveBookPage}','LiveBookPageController@show')->name('view_live_book_page');
 
+    Route::post('upload_live','LiveBookPageController@upload_live')->name('upload_live');
 });
 

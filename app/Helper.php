@@ -65,3 +65,42 @@ if (!function_exists('formatSizeUnits')) {
         return $bytes;
     }
 }
+
+function htmlToImage($html){
+
+
+
+
+
+    $google_fonts = "Roboto";
+
+    $data = array('html' => "<html><body><div  style='height:567px;width:100%;text-align: center;'>".$html."</div></body></html>",
+
+        'google_fonts' => $google_fonts);
+
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, "https://hcti.io/v1/image");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+
+    curl_setopt($ch, CURLOPT_POST, 1);
+// Retrieve your user_id and api_key from https://htmlcsstoimage.com/dashboard
+    curl_setopt($ch, CURLOPT_USERPWD, "7f2fac59-78e7-4763-8b16-bd7014b9c488" . ":" . "8b1b306d-6589-4b0c-999f-7cae40c963ae");
+
+    $headers = array();
+    $headers[] = "Content-Type: application/x-www-form-urlencoded";
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+    $result = curl_exec($ch);
+    if (curl_errno($ch)) {
+        echo 'Error:' . curl_error($ch);
+    }
+    curl_close($ch);
+    $res = json_decode($result, true);
+    return $res['url'];
+// https://hcti.io/v1/image/202dc04d-5efc-482e-8f92-bb51612c84cf
+
+
+}

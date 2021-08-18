@@ -14,6 +14,7 @@
         <div id="collapseExample" class="bg-white rounded shadow-sm sidebar-fix   pb-2" >
 
             <div class="dropdown-menu-show">
+                <p class="pr-3 pl-3 pt-3 "><b>Settings</b></p>
                 <a class="dropdown-item py-2 @if (Route::is('provider.dashboard')) active   @endif"
                     href="{{route('provider.dashboard')}} ">
                     {{__('Profile')}}
@@ -33,16 +34,28 @@
                     @endif>
                     {{__('On Going Orders')}}
                 </a>
-                <a class="dropdown-item py-2 @if (Route::is('provider.services')) active   @endif"
-                    @if(auth()->user()->provider->is_approved)
-                    href="{{route('provider.orders',"history")}}"
-                    @endif>
-                    {{__('Order History')}}
-                </a>
+                <hr>
+                <p class="pr-3 pl-3 pt-3"><b>Books</b> </p>
+
                 <a class="dropdown-item py-2" @if(auth()->user()->provider->is_approved)
                     href="{{route('provider.books')}}"
                     @endif>
                     {{__('My Books')}}
+                </a>
+                <a href="{{route('provider.create_live_book')}}" class="dropdown-item py-2">
+                    {{__('Create Live Book')}}
+                </a>
+                <a class="dropdown-item py-2" href="{{route('provider.index_live_books')}}">
+                    {{__('My Live Books')}}
+                </a>
+                <hr>
+                <p class="pr-3 pl-3 pt-3"><b>Payments & Orders</b> </p>
+
+                <a class="dropdown-item py-2 @if (Route::is('provider.services')) active   @endif"
+                   @if(auth()->user()->provider->is_approved)
+                   href="{{route('provider.orders',"history")}}"
+                    @endif>
+                    {{__('Order History')}}
                 </a>
                 <a class="dropdown-item py-2" @if(auth()->user()->provider->is_approved)
                     href="{{route('provider.services')}}"
@@ -60,7 +73,7 @@
                 </a>
 
 
-
+                <hr>
 
                 <a class="dropdown-item py-2 " href="edit-payment.html">
                     {{__('Log Out')}}
