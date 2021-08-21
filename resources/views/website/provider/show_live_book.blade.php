@@ -43,13 +43,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    @php($num = 0)
                                     @foreach($liveBook->pages as $page)
+                                        @php($num++)
                                     <tr>
                                         <td>{{$page->id}}</td>
                                         <td>{{$page->title}}</td>
                                         <td>
                                             <div class="nowrap">
                                                 <a href="{{route('provider.view_live_book_page',$page->id)}}" class="btn btn-primary">View <i class="fa fa-eye"></i> </a>
+                                                <a href="{{route('liveBook_read',$liveBook->slug)}}?page={{$num}}" class="btn btn-success">View As Reader <i class="fa fa-external-link-square-alt"></i> </a>
+                                                <a href="{{route('provider.edit_live_book_page',$page->id)}}" class="btn btn-warning">Edit <i class="fa fa-edit"></i> </a>
                                             </div>
                                         </td>
                                     </tr>

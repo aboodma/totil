@@ -135,6 +135,9 @@ class ApiController extends Controller
         $categories = ProviderType::all();
         return response()->json($categories, 200);
     }
+    public function Category(ProviderType $providerType){
+        return response()->json($providerType->provider->loadMissing('user'), 200);
+    }
 
     public function Providers()
     {

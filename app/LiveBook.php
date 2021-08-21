@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class LiveBook extends Model
 {
-    public function provide(){
+    public function provider(){
         return $this->belongsTo(Provider::class);
 
     }

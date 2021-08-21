@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\LiveBook;
 use App\LiveBookPage;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -77,7 +78,7 @@ class LiveBookController extends Controller
      */
     public function edit(LiveBook $liveBook)
     {
-
+        return view('website.provider.edit_live_book', compact('liveBook'));
     }
 
     /**
@@ -89,10 +90,28 @@ class LiveBookController extends Controller
      */
     public function update(Request $request, LiveBook $liveBook)
     {
-        //
+
+        $liveBook->provider_id = auth()->user()->provider->id;
+        $liveBook->name = $request->title;
+        $liveBook->description = $request->description;
+        if($request->has('book_cover')){
+            $random = Str::random(40);
+            $cover_path = $request->file('book_cover');
+            $filename = $cover_path->getClientOriginalName();
+            $cover = explode('.', $filename);
+            $cover = $random . '.' . $cover_path->extension();
+            $cover_file = $cover_path->move(public_path() . "/live_book_cover/", $cover);
+            $liveBook->cover =   "/live_book_cover/" . $cover;
+
+        }
+        $liveBook->slug = Str::slug($request->title, $separator = '-', $language = 'ar');
+        $liveBook->publish = true;
+        $liveBook->save();
+        return redirect()->route('provider.index_live_books');
     }
 
-    public function read(LiveBook $liveBook){
+    public function read($slug){
+        $liveBook = LiveBook::where('slug', $slug)->first();
         $pages = LiveBookPage::where('live_book_id',$liveBook->id)->paginate(1);
 
         return view('website.read_live_book',compact('liveBook','pages'));

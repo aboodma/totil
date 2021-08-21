@@ -29,6 +29,10 @@ class LiveBookPageController extends Controller
         return view('website.provider.create_live_book_page',compact('liveBook'));
     }
 
+    public function edit(LiveBookPage $liveBookPage){
+        return view('website.provider.edit_live_book_page',compact('liveBookPage'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -100,7 +104,10 @@ class LiveBookPageController extends Controller
      */
     public function update(Request $request, LiveBookPage $liveBookPage)
     {
-        //
+       $liveBookPage->content = $request->content;
+       if ($liveBookPage->save()){
+           return redirect()->back();
+       }
     }
 
     /**

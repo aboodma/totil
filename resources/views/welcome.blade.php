@@ -1,41 +1,41 @@
 @extends('layouts.website')
 @section('style')
+    <style>
+        .live {
+            float: left;
+        }
 
+        .pulse {
+
+            margin-top: 0.5em;
+            width: 13px;
+            height: 13px;
+            border-radius: 5px;
+        }
+        @-webkit-keyframes redPulse {
+            from {
+                background-color: #bc330d;
+            //-webkit-box-shadow: 0 0 9px #333;
+            }
+            50% {
+                background-color: #e33100;
+                -webkit-box-shadow: 0 0 18px #e33100;
+            }
+            to {
+                background-color: #bc330d;
+            //-webkit-box-shadow: 0 0 9px #333;
+            }
+        }
+        span.pulse.red {
+            -webkit-animation-name: redPulse;
+            -webkit-animation-duration: 2s;
+            -webkit-animation-iteration-count: infinite;
+        }
+    </style>
 @endsection
 @section('content')
 
-    <div class="freelance-projects bg-white py-3">
-        <div class="container">
-            <div class="row">
-                @foreach(\App\LiveBook::all() as $book)
-                <div class=" col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
-                    <div class="freelancer">
-                        <div>
-                            <div class="top-right p-1 text-center">
 
-
-                            </div>
-
-                            <a href="{{route('liveBook_read',$book->id)}}">
-                                <img src="{{asset($book->cover)}}">
-                            </a>
-                        </div>
-                        <a href="">
-                            <div class="freelancer-footer">
-
-                                <h5 style="padding: 0px;">{{$book->name}}
-{{--                                    <span style="font-size: 12px">{{ucfirst(strtolower(_ti($provider->ProviderType->name)))}}--}}
-{{--                                    <br>--}}
-{{--                                    {{ucfirst(strtolower(_ti($provider->Country->name)))}}</span>--}}
-                                </h5>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
     <div class="services-wrapper bg-white py-5">
         <div class="container">
             <div class="row main-slider">
@@ -68,7 +68,44 @@
         </div>
     </div>
 
+    <div class="freelance-projects bg-light py-3">
+        <div class="container">
+            <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 mb-1">
+                <span>{{__('Live Books')}}</span>
+            <span class="pulse red live mr-2"></span>
+{{--                <a href="{{route('categories')}}" style="color:#04808B; font-weight:800" class="float-right"> <small--}}
+{{--                        style="font-size: 13px ; font-weight:700">{{__('See all')}} </small></a>--}}
+            </p>
+            <div class="row service-slider">
+                @foreach(\App\LiveBook::all() as $book)
+                    <div class="col">
+                        <div class="freelancer">
+                            <div>
+                                <div class="top-right p-1 text-center">
 
+
+                                </div>
+
+                                <a href="{{route('liveBook_read',$book->slug)}}">
+                                    <img src="{{asset($book->cover)}}">
+                                </a>
+                            </div>
+                            <a href="">
+                                <div class="freelancer-footer">
+
+                                    <h5 style="padding: 0px;">{{$book->name}}
+                                        {{--                                    <span style="font-size: 12px">{{ucfirst(strtolower(_ti($provider->ProviderType->name)))}}--}}
+                                        {{--                                    <br>--}}
+                                        {{--                                    {{ucfirst(strtolower(_ti($provider->Country->name)))}}</span>--}}
+                                    </h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
     <div class="services-wrapper bg-white py-3">
         <div class="container">
             <p style="font-weight: 800;font-size:1.3rem; color:#241332" class="pb-0 mb-1">{{__('Categories')}}
